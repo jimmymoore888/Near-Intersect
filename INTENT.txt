@@ -1,0 +1,34 @@
+Project Name:
+Intersect
+
+Phase:
+0
+
+Template:
+B — Fixed Supply + Deterministic Time-Lock
+
+Chain:
+NEAR Protocol
+
+Reason for Existence:
+To issue assets that cannot be changed, revoked, or governed
+by the issuer after creation.
+
+Definition of “Launched”:
+An asset exists on NEAR that:
+1) Uses a locked contract template
+2) Was issued via a single irreversible ceremony
+3) Is independently verifiable
+4) Cannot be mutated or revoked by Intersect
+
+I acknowledge:
+• There are no admin keys
+• There are no upgrades
+• There is no rollback
+• Mistakes persist forever
+
+Signed (name or handle):
+____________________
+
+Date:
+____________________
