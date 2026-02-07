@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-near-sdk = { version = "4.0.0", default-features = false, features = ["env", "near-bindgen", "collections", "json-types"] }
+near-sdk = { version = "4.1.1", features = ["abi"] }
 
 [profile.release]
 opt-level = "z"
