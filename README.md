@@ -1,5 +1,13 @@
 # Mobile-First Modular Crypto Issuance Framework (NEAR-Compatible)
+# Near-Intersect
 
+Mobile-first, invariant-enforced asset issuance on NEAR.
+
+**Governed by RagTuff invariant architecture (commercial licensing required for full schema access).**
+
+---
+
+<your existing README content continues here>
 ## Status
 **Concept, architecture, and specifications complete.  
 Execution layer intentionally unimplemented.  
