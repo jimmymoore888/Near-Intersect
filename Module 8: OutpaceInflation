@@ -1,6 +1,6 @@
 	1.	README.md
 # Module 8: OutpaceInflation (OIM)
-
+- Module 8: OutpaceInflation (real-return treasury/savings policy; oracle or fixed hurdle)
 ## Purpose
 OutpaceInflation (OIM) is a policy module that governs treasury/savings positioning to target positive real return over time (i.e., outpace inflation), without modifying token supply or violating LAW invariants.
 
