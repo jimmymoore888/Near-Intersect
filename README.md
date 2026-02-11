@@ -70,7 +70,7 @@ This project defines a **LAW-based asset framework** where:
   - User interface
 
 ---
-Capital Routing Invariants
+## Capital Routing Invariants
 
 Near-Intersect defines deterministic capital routing at the protocol layer. These parameters are contract-level invariants and are not subject to discretionary governance modification.
 
