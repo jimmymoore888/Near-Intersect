@@ -70,7 +70,44 @@ This project defines a **LAW-based asset framework** where:
   - User interface
 
 ---
+Capital Routing Invariants
 
+Near-Intersect defines deterministic capital routing at the protocol layer. These parameters are contract-level invariants and are not subject to discretionary governance modification.
+
+Bootstrap Phase (Protocol Years 0–10)
+
+On every primary issuance event:
+	•	4.5% → Liquidity Pool
+Automatic market depth accumulation
+	•	7.5% → Outpace Inflation Module (OIM)
+Treasury reserve for long-horizon capital discipline
+	•	88.0% → Participant Allocation
+
+This 10-year bootstrap period establishes durable liquidity and treasury foundations during early protocol formation.
+
+⸻
+
+Post-Bootstrap Phase (Year 10+)
+
+After the initial 10-year period:
+	•	1.5% → Liquidity Pool (permanent)
+Ongoing structural market maintenance
+	•	7.5% → Outpace Inflation Module (OIM)
+Treasury routing remains constant
+	•	91.0% → Participant Allocation
+
+The elevated bootstrap liquidity contribution expires automatically. The permanent 1.5% liquidity anchor remains.
+
+⸻
+
+Architectural Rationale
+	•	Deterministic capital routing
+	•	Time-bounded liquidity acceleration
+	•	Permanent market stabilization
+	•	Long-horizon treasury growth
+	•	No adjustable fees or governance overrides
+
+These constraints exist to ensure predictable market structure and disciplined economic behavior across decades.
 ## What Exists in This Repository
 
 This repository is **not vaporware**. It contains:
