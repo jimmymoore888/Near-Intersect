@@ -13,4 +13,4 @@ Near-Intersect MUST:
 
 Note: “OIM” defines constraints and allowed mechanisms only. It does not guarantee returns.
 
-https://github.com/jimmymoore888/<RagTuffRepoName>/blob/oim-v1.0.0/OIM/OIM_v1_SPEC.md
+https://github.com/jimmymoore888/ragtuff/blob/oim-v1.0.0/OIM/OIM_v1_SPEC.md
