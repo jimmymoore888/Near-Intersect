@@ -225,6 +225,36 @@ Trust Level: READ ONLY
 
 Plane: AUDIT
 
+
+## N12 — OIM Runtime Governor (Module 8)
+
+Role:
+- Policy governor for treasury/savings allocation targeting positive real return over time
+- Operates ONLY within declared bucket caps and LAW constraints
+
+Modes:
+- ORACLE (inflation index posted by authorized oracle; staleness => freeze)
+- FIXED_HURDLE (genesis-fixed hurdle; no oracle)
+
+Hard Boundaries (Non-Negotiable):
+- MUST NOT mint/burn/modify supply (INV-OIM-01)
+- MUST NOT alter timelocks/vesting/unlock windows (INV-OIM-02)
+- MUST NOT bypass LAW validation or deployment gates
+- MUST NOT move funds outside Safety <-> Growth rebalance bounds
+- Oracle role MUST NOT move funds (INV-OIM-04)
+
+Inputs:
+- OimConfig (mode, caps, cooldown, staleness window)
+- OimState (last_index, last_rebalance_at, score, status)
+- Deterministic accounting signals (vault shares, stable-denominated balances)
+
+Outputs:
+- OIM status updates (HEALTHY / BEHIND / ORACLE_STALE)
+- Bounded allocation shift Safety <-> Growth (if permitted)
+- Audit events: OIM_INDEX_POSTED, OIM_STATUS_UPDATED, OIM_REBALANCED
+
+Trust Level: PARTIAL (bounded by invariants + governance gate)
+Plane: DATA (governed by CONTROL decisions)
 ---
 
 # 2. Trust Boundaries
