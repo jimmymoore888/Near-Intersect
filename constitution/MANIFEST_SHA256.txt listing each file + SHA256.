@@ -1,0 +1,17 @@
+	•	constitution/LAW_VALIDATION.md
+	•	constitution/REGISTRY_CERTIFICATION_DEPLOYMENT.md
+	•	constitution/DIAGNOSTIC_GRAPH_v0.md
+	•	constitution/ENFORCEMENT_MATRIX_v0.md
+	•	constitution/ENFORCEMENT_MATRIX_TESTPLAN_v0.md
+	•	constitution/OIM_*
+
+## mkdir -p constitution
+cp LAW_VALIDATION.md REGISTRY_CERTIFICATION_DEPLOYMENT.md DIAGNOSTIC_GRAPH_v0.md \
+   ENFORCEMENT_MATRIX_v0.md ENFORCEMENT_MATRIX_TESTPLAN_v0.md \
+   OIM.md OIM_BINDING.md OIM_INTERFACE.md OIM_INVARIANTS.md constitution/
+
+(cd constitution && shasum -a 256 * > MANIFEST_SHA256.txt)
+
+git add constitution/MANIFEST_SHA256.txt
+git commit -m "Add constitution manifest (SHA256)"
+git push
