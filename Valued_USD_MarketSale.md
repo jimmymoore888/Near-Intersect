@@ -1,4 +1,4 @@
-# Commercial Value & Indicative Deal Bands (Non-Binding)
+# Commercial Value & Indicative Deal Bands (Non-Binding) Estimated starting price 70,000,000.00 USD 
 
 This page is **not** a formal valuation, not investment advice, and not an offer to sell securities.
 It provides **non-binding indicative discussion ranges** for acquisition / licensing, subject to diligence.
@@ -24,7 +24,6 @@ Final price depends on code review, chain proofs, adoption, IP cleanliness, and 
 ### A) Acquisition (Near-Intersect + RagTuff package)
 - **Pre-traction / repo-only (docs + architecture + partial code)**  
   **$1M – $20M** (depending on completeness and diligence outcomes)
-
 - **Factory v0 proven (end-to-end creation, registry/events, reproducible builds)**  
   **$20M – $85M**
 
