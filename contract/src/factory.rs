@@ -1,64 +1,123 @@
-use crate::law::LawV1Schema;
-use near_sdk::borsh::{BorshDeserialize, BorshSerialize};
-use near_sdk::collections::LookupMap;
-use near_sdk::{env, AccountId};
+use near_sdk::{
+    near_bindgen, env, AccountId, PanicOnDefault,
+    collections::UnorderedMap,
+};
+use serde::{Serialize, Deserialize};
 
-#[derive(BorshDeserialize, BorshSerialize)]
-pub struct Factory {
-    registry: LookupMap<String, TokenRecord>,
+/// ==============================
+/// TOKEN PROFILE (SYSTEM ANCHOR)
+/// ==============================
+#[derive(Serialize, Deserialize, Clone)]
+#[serde(crate = "near_sdk::serde")]
+pub struct TokenProfile {
+    pub owner: AccountId,
+    pub total_supply: u128,
+    pub oim_enabled: bool,
+    pub modules: Vec<u8>,
 }
 
-#[derive(BorshDeserialize, BorshSerialize)]
-pub struct TokenRecord {
-    pub account: AccountId,
-    pub law: LawV1Schema,
-    pub created_by: AccountId,
-    pub created_at_ns: u64,
-    /// sha256(borsh(law)) — binds schema to a deterministic fingerprint
-    pub schema_hash: Vec<u8>,
+/// ==============================
+/// CONTRACT STATE (REGISTRY)
+/// ==============================
+#[near_bindgen]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    pub tokens: UnorderedMap<AccountId, TokenProfile>,
 }
 
-impl Factory {
+/// ==============================
+/// INITIALIZATION
+/// ==============================
+#[near_bindgen]
+impl Contract {
+    #[init]
     pub fn new() -> Self {
         Self {
-            registry: LookupMap::new(b"r"),
+            tokens: UnorderedMap::new(b"t"),
+        }
+    }
+}
+
+/// ==============================
+/// MODULE ENGINE (DETERMINISTIC)
+/// ==============================
+fn generate_module_profile(seed: u64) -> Vec<u8> {
+    let mut modules: Vec<u8> = vec![];
+
+    // Base deterministic seed (bounded to modules 1–7)
+    let base = seed % 7 + 1;
+
+    for i in 0..3 {
+        let module_id = ((base + i as u64) % 7 + 1) as u8;
+
+        // Enforce max 2 duplicates
+        let count = modules.iter().filter(|&&m| m == module_id).count();
+        if count < 2 {
+            modules.push(module_id);
         }
     }
 
-    pub fn create_token(&mut self, symbol: String, account: AccountId, law: LawV1Schema) {
-        let s = normalize_symbol(&symbol);
-
-        assert!(self.registry.get(&s).is_none(), "SYMBOL_USED");
-
-        // LAW enforcement (hard fail)
-        law.validate();
-
-        // schema_hash = sha256(borsh(law))
-        let schema_bytes = law.try_to_vec().expect("LAW: borsh serialize failed");
-        let schema_hash = env::sha256(&schema_bytes);
-
-        let rec = TokenRecord {
-            account,
-            law,
-            created_by: env::predecessor_account_id(),
-            created_at_ns: env::block_timestamp(),
-            schema_hash,
-        };
-
-        self.registry.insert(&s, &rec);
-    }
-
-    pub fn get_token(&self, symbol: String) -> Option<AccountId> {
-        let s = normalize_symbol(&symbol);
-        self.registry.get(&s).map(|r| r.account)
-    }
-
-    pub fn get_record(&self, symbol: String) -> Option<TokenRecord> {
-        let s = normalize_symbol(&symbol);
-        self.registry.get(&s)
-    }
+    modules
 }
 
-fn normalize_symbol(symbol: &str) -> String {
-    symbol.trim().to_uppercase()
+/// ==============================
+/// FACTORY CORE (COHESION LAYER)
+/// ==============================
+#[near_bindgen]
+impl Contract {
+
+    /// Create a new RagTuff-compliant token profile
+    pub fn create_token(&mut self, owner: AccountId) {
+
+        // --------------------------
+        // VALIDATION
+        // --------------------------
+        assert!(
+            self.tokens.get(&owner).is_none(),
+            "Token already exists for this owner"
+        );
+
+        // --------------------------
+        // SEED (CHAIN-BASED)
+        // --------------------------
+        let seed = env::block_timestamp();
+
+        // --------------------------
+        // MODULE GENERATION
+        // --------------------------
+        let modules = generate_module_profile(seed);
+
+        // --------------------------
+        // CONSTRUCT TOKEN PROFILE
+        // --------------------------
+        let profile = TokenProfile {
+            owner: owner.clone(),
+            total_supply: 10_000_000_000, // 10B fixed supply
+            oim_enabled: true,            // LAW: mandatory
+            modules,
+        };
+
+        // --------------------------
+        // PERSIST (REGISTRY)
+        // --------------------------
+        self.tokens.insert(&owner, &profile);
+
+        // --------------------------
+        // EVENT LOG (OBSERVABILITY)
+        // --------------------------
+        env::log_str(
+            &format!(
+                "TOKEN_CREATED: owner={}, supply={}, oim={}, modules={:?}",
+                owner,
+                profile.total_supply,
+                profile.oim_enabled,
+                profile.modules
+            )
+        );
+    }
+
+    /// View a token profile
+    pub fn get_token(&self, owner: AccountId) -> Option<TokenProfile> {
+        self.tokens.get(&owner)
+    }
 }
