@@ -1,3 +1,95 @@
-TimeLock {
-  duration: UInt
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{
+    near_bindgen, env, AccountId, Balance, PanicOnDefault, Promise,
+};
+
+#[derive(BorshDeserialize, BorshSerialize, Clone)]
+pub struct Lock {
+    pub owner: AccountId,
+    pub amount: Balance,
+    pub unlock_timestamp: u64,
+    pub claimed: bool,
+}
+
+#[near_bindgen]
+#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+pub struct TimeLock {
+    pub locks: Vec<Lock>,
+}
+
+#[near_bindgen]
+impl TimeLock {
+    #[init]
+    pub fn new() -> Self {
+        Self {
+            locks: Vec::new(),
+        }
+    }
+
+    /// Create a new time-locked position
+    pub fn create_lock(
+        &mut self,
+        owner: AccountId,
+        amount: Balance,
+        unlock_timestamp: u64,
+    ) {
+        assert!(amount > 0, "Amount must be > 0");
+        assert!(
+            unlock_timestamp > env::block_timestamp(),
+            "Unlock time must be in the future"
+        );
+
+        self.locks.push(Lock {
+            owner,
+            amount,
+            unlock_timestamp,
+            claimed: false,
+        });
+    }
+
+    /// Claim locked funds after unlock time
+    pub fn claim(&mut self, index: u64) {
+        let mut lock = self
+            .locks
+            .get(index as usize)
+            .expect("Invalid index")
+            .clone();
+
+        assert_eq!(
+            lock.owner,
+            env::predecessor_account_id(),
+            "Not authorized"
+        );
+
+        assert!(!lock.claimed, "Already claimed");
+
+        let now = env::block_timestamp();
+        assert!(
+            now >= lock.unlock_timestamp,
+            "Funds are still locked"
+        );
+
+        lock.claimed = true;
+        self.locks[index as usize] = lock.clone();
+
+        Promise::new(lock.owner).transfer(lock.amount);
+    }
+
+    /// View lock details
+    pub fn get_lock(&self, index: u64) -> Lock {
+        self.locks
+            .get(index as usize)
+            .expect("Invalid index")
+            .clone()
+    }
+
+    /// Check if lock is claimable
+    pub fn is_unlocked(&self, index: u64) -> bool {
+        let lock = self
+            .locks
+            .get(index as usize)
+            .expect("Invalid index");
+
+        env::block_timestamp() >= lock.unlock_timestamp && !lock.claimed
+    }
 }
