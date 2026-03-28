@@ -6,6 +6,7 @@ HOMETOWN
 # NEAR-INTERSECT
 ### A System for Creating Inflation-Resistant Digital Assets
 
+ESTIMATED VALUE: $23,000,000.00 USD 
 ---
 
 ## 1. WHAT THIS IS
