@@ -1,156 +1,252 @@
-## What this is
-Near-Intersect is a governed smart-contract factory on the NEAR blockchain.
-It enforces RagTuff invariant law (schemas + deployment gates) to create compliant on-chain assets.
-
-## What this is NOT
-Not a game, not a Lua script, not a “Ragtuff game” tool, and not related to any game mods.
-
-# Mobile-First Modular Crypto Issuance Framework (NEAR-Compatible)
-
-## Status
-**Concept, architecture, and specifications complete.  
-Execution layer intentionally unimplemented.  
-This project is available for acquisition, partnership, or handoff to a capable team.**
+# NEAR-INTERSECT
+### A System for Creating Inflation-Resistant Digital Assets
 
 ---
 
-## Executive Summary
+## 1. WHAT THIS IS
 
-This repository contains a **complete architectural blueprint** for a modular, utility-driven cryptocurrency issuance system designed to work **from mobile devices (iPhone / Android)**.
+Near-Intersect is a system that allows anyone to create a digital asset governed by enforced economic laws, not speculation.
 
-Unlike existing token creation tools—which only support static parameters (name, supply, decimals)—this framework introduces a **law-based, modular system** where economic behavior (burning, savings, vesting, distribution, etc.) is defined declaratively and enforced deterministically.
+Each asset is not just a token — it is a self-contained financial system with:
 
-The core insight is simple:
-
-> **Crypto assets should be created by selecting rules, not writing code.**
-
-This project was designed with **NEAR Protocol compatibility** in mind, but the architecture is chain-agnostic and transferable.
-
----
-
-## The Problem
-
-Today’s crypto issuance ecosystem has three fundamental failures:
-
-1. **Tokens are static**
-   - Most tools only allow basic metadata.
-   - Utility requires bespoke smart contracts and engineers.
-
-2. **Utility is non-modular**
-   - Burn mechanics, timelocks, savings, airdrops, and governance are all custom.
-   - There is no standard way to declare or compose economic behavior.
-
-3. **Mobile users are excluded**
-   - Issuance requires laptops, CLIs, compilers, or WASM handling.
-   - Phones are treated as wallets, not creation tools.
-
-**Result:** Asset creation is developer-gated, fragile, and inaccessible to non-technical users.
+- Built-in treasury behavior  
+- Controlled capital flows  
+- Long-term savings mechanisms  
+- Enforced structural discipline  
 
 ---
 
-## The Solution
+## 2. WHY THIS EXISTS
 
-This project defines a **LAW-based asset framework** where:
+Most digital assets fail due to:
 
-- Economic behavior is expressed as **modules**
-- Modules are composed into a deterministic **LAW schema**
-- Execution is separated from authorship
-- End users can create assets **without writing code**
-- Mobile devices are first-class creation interfaces
+- Lack of structure  
+- Short-term incentives  
+- No resistance to inflation  
+- Dependence on hype cycles  
 
-### Key Design Principles
+Near-Intersect removes these weaknesses by embedding rules directly into the asset itself.
 
-- **Law over logic**: rules are declared, not coded ad-hoc
-- **Modularity**: utility features are pluggable and composable
-- **Determinism**: behavior is predictable and auditable
-- **Separation of concerns**:
-  - LAW definition
-  - Execution engine
-  - User interface
+The system does not rely on user behavior.
+
+It defines the environment in which behavior occurs.
 
 ---
 
-## What Exists in This Repository
+## 3. SYSTEM ARCHITECTURE (MENTAL MODEL)
 
-This repository is **not vaporware**. It contains:
+Near-Intersect operates across three layers:
 
-- Formal **LAW schemas**
-- Clearly defined **utility modules**
-- Explicit **economic invariants**
-- Documentation separating:
-  - Asset law
-  - Execution assumptions
-  - User intent
-- A mobile-first mental model validated by real constraints
+### RagTuff (Law Layer)
+- The constitutional rule set  
+- Enforces invariants  
+- Prevents manipulation or bypassing of core logic  
 
-### What Is Intentionally Missing
+### Near-Intersect (Factory Layer)
+- The creation engine  
+- Applies rules automatically  
+- Assigns economic structure  
 
-- Final execution contract / factory
-- Mobile UI
-- Deployment tooling
-
-These are **implementation tasks**, not architectural gaps.
+### Token (Instance Layer)
+- Your created asset  
+- Your treasury system  
+- Your user network  
 
 ---
 
-## Why This Has Value
+## 4. WHAT HAPPENS WHEN YOU CREATE A TOKEN
 
-### For Acquirers (Foundations, Wallets, Infra Companies)
-- A ready-made issuance architecture
-- A path to unlock non-developer users
-- Differentiation from “meme minting” tools
-- Reduced risk via invariant-driven design
+1. You create a token through Near-Intersect  
+2. The system automatically assigns:
+   - OIM (Outpace Inflation Module) — mandatory  
+   - 3 additional modules (randomized)  
+3. Treasury is initialized  
+4. Capital flow rules activate  
+5. Savings vault begins tracking long-term allocations  
+6. Asset becomes live and usable  
 
-### For Partners (Chains, L2s, Appchains)
-- A reusable **law layer** without reinventing economics
-- A mobile-first issuance narrative
-- Clean integration above existing execution environments
-
-### For Developers
-- Clear specs
-- Constrained, auditable surface
-- No need to redesign token economics from scratch
+At this point, you are operating a structured financial system — not just holding a token.
 
 ---
 
-## Why This Was Not Fully Deployed
+## 5. HOW MONEY MOVES (CORE ECONOMICS)
 
-This project stalled **not because of design flaws**, but because current ecosystems (including NEAR) **do not expose mobile-friendly execution surfaces for asset factories**.
+### Capital Flow Fee
 
-This is a tooling and UX limitation, not a conceptual failure.
+Every movement of capital (in or out) includes a:
 
-The gap identified here is real and currently unresolved across most ecosystems.
+**1.15% structured flow fee**
 
----
+This supports:
 
-## Availability / Sale Notice
-
-This project is **available to the right buyer or partner**.
-
-I am open to:
-- Full acquisition of the concept and materials
-- Strategic partnership with a team capable of implementation
-- Handoff to a foundation, wallet provider, or infrastructure company
-- Advisory or collaboration during execution (optional)
-
-I am **not** seeking to personally build or maintain the execution layer alone.
-
-Serious inquiries only.
+- Treasury growth  
+- System sustainability  
+- Long-term participant value  
 
 ---
 
-## Contact
+### Treasury Allocation
 
-If you are interested in acquiring, partnering, or implementing this framework, reach out via GitHub or associated contact channels.
+Capital entering the system is programmatically distributed into:
+
+- Liquidity support  
+- Savings mechanisms  
+- Stability functions  
+
+No manual control. No discretionary overrides.
 
 ---
 
-## Final Note
+### Savings Vault (16-Year Cycle)
 
-This repository represents a **missing layer in crypto**:
+A portion of value is locked into a deterministic schedule:
 
-> **Economic law should be accessible, modular, and mobile-first.**
+- Total duration: 16 years  
+- Unlock frequency: every 2 years  
+- Access window: 7 days  
+- Then relocked automatically  
 
-The architecture is complete.  
-The opportunity is real.  
-The execution is open.
+This creates:
+
+- Long-term alignment  
+- Reduced volatility  
+- Predictable liquidity events  
+
+---
+
+## 6. OUTPACE INFLATION MODULE (OIM)
+
+Every asset includes OIM by default.
+
+Purpose:
+
+- Counter long-term value erosion  
+- Enforce disciplined capital allocation  
+- Prevent short-term extraction  
+
+This is a core differentiator of the system.
+
+---
+
+## 7. MODULE SYSTEM (STRUCTURAL UNIQUENESS)
+
+Each token includes:
+
+- OIM (fixed)  
+- + 3 randomized modules  
+
+Results:
+
+- Each asset behaves differently  
+- Economic profiles vary  
+- No identical token structures  
+
+All assets follow the same laws, but no two are the same.
+
+---
+
+## 8. WHAT YOU GAIN AS AN INVESTOR
+
+### Structured Growth
+System-driven, not hype-driven.
+
+### Controlled Risk
+Behavior is constrained by design.
+
+### Long-Term Value Cycles
+Driven by enforced savings and unlock schedules.
+
+### Network Expansion Potential
+As participation increases:
+
+- Capital inflow increases  
+- Treasury grows  
+- System activity compounds  
+
+---
+
+## 9. EXAMPLE SCENARIO
+
+If $100,000 enters the system:
+
+- 1.15% is captured as a flow fee  
+- Remaining capital is allocated into:
+  - Treasury  
+  - Liquidity  
+  - Savings vault  
+
+Over time:
+
+- Locked capital accumulates  
+- Unlock cycles release value predictably  
+- System continues compounding through usage  
+
+---
+
+## 10. HOW TO GET STARTED
+
+Requirements:
+
+- NEAR CLI (command-line interface for deployment)
+
+Basic Steps:
+
+1. Set environment  
+2. Deploy contract  
+3. Initialize token  
+4. Begin participation  
+
+---
+
+## 11. ROADMAP
+
+### Phase 1
+- Core factory deployment  
+- Token creation  
+- Module assignment  
+
+### Phase 2
+- Module expansion  
+- Registry and discoverability  
+
+### Phase 3
+- Real capital integration  
+- Scaled onboarding  
+
+---
+
+## 12. PHILOSOPHY
+
+Most systems rely on users behaving correctly.
+
+Near-Intersect builds systems where correct behavior is enforced.
+
+- Rules are fixed  
+- Behavior is guided  
+- Outcomes are structured  
+
+---
+
+## FINAL POSITION
+
+Near-Intersect is not designed to create hype-driven assets.
+
+It defines a new category:
+
+**Assets that behave correctly by design**
+
+---
+
+## NEXT STEPS
+
+If evaluating:
+- Study capital flow mechanics  
+- Understand lock cycles  
+- Review module behavior  
+
+If participating:
+- Create your asset  
+- Build your network  
+- Allow the system to operate over time  
+
+---
