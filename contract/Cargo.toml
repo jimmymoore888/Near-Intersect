@@ -8,7 +8,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 near-sdk = "5.0.0"
-
+borsh = "1.5.0"
 
 [profile.release]
 opt-level = "z"
