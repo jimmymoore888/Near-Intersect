@@ -1,6 +1,8 @@
 use near_sdk::{
-    near_bindgen, env, AccountId, PanicOnDefault,
-    borsh::{self, BorshDeserialize, BorshSerialize}
+    near_bindgen,
+    AccountId,
+    PanicOnDefault,
+    borsh::{BorshDeserialize, BorshSerialize},
 };
 
 #[near_bindgen]
@@ -13,7 +15,6 @@ pub struct Contract {
 impl Contract {
     #[init]
     pub fn new(owner: AccountId) -> Self {
-        assert!(!env::state_exists(), "Already initialized");
         Self { owner }
     }
 
