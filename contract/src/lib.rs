@@ -1,78 +1,52 @@
-mod factory;
-mod law;
-
-// NOTE: OIM remains in the repo, but is intentionally NOT wired into the build yet.
-// This keeps Factory v0 compilable while Module 8 is still being finalized.
-
-use crate::factory::Factory;
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::json_types::Base64VecU8;
-use near_sdk::serde::{Deserialize, Serialize};
-use near_sdk::{env, near_bindgen, AccountId, PanicOnDefault};
-
-pub use law::{
-    Airdrop, BurnCap, FixedSupply, LawV1Schema, LiquidityBootstrap, PercentageDistribution,
-    TimeLock, VestingSchedule,
+use near_sdk::{
+    near_bindgen,
+    env,
+    AccountId,
+    BorshDeserialize,
+    BorshSerialize,
 };
 
-#[derive(Serialize, Deserialize)]
+use near_sdk::store::UnorderedMap;
+use near_sdk::serde::{Serialize, Deserialize};
+
+#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]
 #[serde(crate = "near_sdk::serde")]
-pub struct TokenRecordView {
-    pub symbol: String,
-    pub account: AccountId,
-    pub created_by: AccountId,
-    pub created_at_ns: u64,
-    pub schema_hash: Base64VecU8,
-    pub law: LawV1Schema,
+pub struct TokenProfile {
+    pub owner: AccountId,
+    pub total_supply: u128,
+    pub oim_enabled: bool,
+    pub modules: Vec<u8>,
 }
 
 #[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
-    factory: Factory,
+    tokens: UnorderedMap<String, TokenProfile>,
 }
 
 #[near_bindgen]
 impl Contract {
     #[init]
     pub fn new() -> Self {
-        assert!(!env::state_exists(), "Already initialized");
         Self {
-            factory: Factory::new(),
+            tokens: UnorderedMap::new(b"t"),
         }
     }
 
-    /// Factory v0: register a token account under a symbol, bound to an immutable LAW schema.
-    pub fn create_token(&mut self, symbol: String, account: AccountId, law: LawV1Schema) {
-        self.factory.create_token(symbol.clone(), account.clone(), law);
+    pub fn create_token(&mut self, token_id: String, total_supply: u128) {
+        let caller = env::predecessor_account_id();
 
-        // Minimal event (NEP-297 style prefix, deterministic JSON)
-        env::log_str(&format!(
-            r#"EVENT_JSON:{{"standard":"near-intersect","version":"1.0.0","event":"TOKEN_REGISTERED","data":{{"symbol":"{}","account":"{}"}}}}"#,
-            symbol.trim().to_uppercase(),
-            account
-        ));
+        let profile = TokenProfile {
+            owner: caller,
+            total_supply,
+            oim_enabled: true,
+            modules: vec![1, 2, 3],
+        };
+
+        self.tokens.insert(token_id, profile);
     }
 
-    pub fn get_token(&self, symbol: String) -> Option<AccountId> {
-        self.factory.get_token(symbol)
-    }
-
-    pub fn get_record(&self, symbol: String) -> Option<TokenRecordView> {
-        let sym = symbol.trim().to_uppercase();
-        let r = self.factory.get_record(sym.clone())?;
-
-        Some(TokenRecordView {
-            symbol: sym,
-            account: r.account,
-            created_by: r.created_by,
-            created_at_ns: r.created_at_ns,
-            schema_hash: Base64VecU8(r.schema_hash),
-            law: r.law,
-        })
-    }
-
-    pub fn get_law(&self, symbol: String) -> Option<LawV1Schema> {
-        self.get_record(symbol).map(|v| v.law)
+    pub fn get_token(&self, token_id: String) -> Option<TokenProfile> {
+        self.tokens.get(&token_id).cloned()
     }
 }
