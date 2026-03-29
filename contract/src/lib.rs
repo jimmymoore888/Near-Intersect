@@ -9,6 +9,7 @@ use near_sdk::{
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
 #[borsh(crate = "near_sdk::borsh")]
 pub struct Contract {
+    owner: AccountId,
 }
 
 #[near_bindgen]
