@@ -18,7 +18,6 @@ pub struct TokenProfile {
     pub modules: Vec<u8>,
 }
 
-
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
