@@ -1,5 +1,6 @@
 use near_sdk::{
-    near_bindgen, env, AccountId, BorshDeserialize, BorshSerialize, PanicOnDefault
+    near_bindgen, env, AccountId, PanicOnDefault,
+    borsh::{self, BorshDeserialize, BorshSerialize}
 };
 
 #[near_bindgen]
