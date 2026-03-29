@@ -4,10 +4,11 @@ version = "0.2.0"
 edition = "2021"
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib"]
 
 [dependencies]
-near-sdk = "5.24.1"
+near-sdk = "4.1.1"
+borsh = "0.9"
 
 [profile.release]
 opt-level = "z"
