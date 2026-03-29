@@ -17,6 +17,7 @@ pub struct TokenProfile {
     pub oim_enabled: bool,
     pub modules: Vec<u8>,
 }
+}
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
