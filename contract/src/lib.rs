@@ -1,11 +1,12 @@
 use near_sdk::{
+    near,
     near_bindgen,
     AccountId,
     PanicOnDefault,
     borsh::{BorshDeserialize, BorshSerialize},
 };
 
-#[near_bindgen]
+#[near]
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
 #[borsh(crate = "near_sdk::borsh")]
 pub struct Contract {
