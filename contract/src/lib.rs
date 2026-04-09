@@ -1,23 +1,18 @@
-use near_sdk::{
-    near,
-    AccountId,
-    PanicOnDefault,
-};
+use near_sdk::near;
 
 #[near(contract_state)]
-#[derive(PanicOnDefault)]
 pub struct Contract {
-    owner: AccountId,
+    owner: String,
 }
 
 #[near]
 impl Contract {
     #[init]
-    pub fn new(owner: AccountId) -> Self {
+    pub fn new(owner: String) -> Self {
         Self { owner }
     }
 
-    pub fn get_owner(&self) -> AccountId {
+    pub fn get_owner(&self) -> String {
         self.owner.clone()
     }
 }
