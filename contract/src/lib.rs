@@ -2,12 +2,10 @@ use near_sdk::{
     near,
     AccountId,
     PanicOnDefault,
-    borsh::{self, BorshDeserialize, BorshSerialize},
 };
 
 #[near(contract_state)]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
-#[borsh(crate = "near_sdk::borsh")]
+#[derive(PanicOnDefault)]
 pub struct Contract {
     owner: AccountId,
 }
