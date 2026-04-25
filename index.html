@@ -1,158 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Near-Intersect | System Interface</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Near Intersect Volcano</title>
 
 <style>
 :root {
-    --bg: #050505;
-    --panel: #0d0d0d;
-    --border: #1a1a1a;
-    --text: #eaeaea;
-    --muted: #777;
-    --accent: #00ffcc;
+  --bg: #050505;
+  --panel: #0d0d0d;
+  --panel2: #111;
+  --border: #242424;
+  --text: #f2f2f2;
+  --muted: #9a9a9a;
+  --accent: #00ffcc;
+  --fire: #ff5a1f;
+  --gold: #ffaa00;
+  --red: #ff2e2e;
 }
 
+* { box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: monospace;
-    background: var(--bg);
-    color: var(--text);
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background:
+    radial-gradient(circle at top, rgba(255,90,31,0.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(0,255,204,0.08), transparent 30%),
+    var(--bg);
+  color: var(--text);
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 30px 20px;
+  max-width: 1150px;
+  margin: auto;
+  padding: 28px 18px 60px;
 }
 
-.header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+.hero {
+  padding: 60px 0 42px;
+  border-bottom: 1px solid var(--border);
+}
+
+.badge {
+  display: inline-block;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
 }
 
 h1 {
-    font-size: 1.8rem;
+  font-size: clamp(2.3rem, 8vw, 5.4rem);
+  line-height: 0.95;
+  margin: 0;
+  letter-spacing: -3px;
 }
 
-.sub {
-    color: var(--muted);
-    margin-top: 5px;
+h1 span { color: var(--fire); }
+
+.lead {
+  max-width: 850px;
+  color: #d7d7d7;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 24px 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 13px 18px;
+  font-weight: 800;
+  border: 1px solid var(--accent);
+}
+
+.btn.secondary {
+  color: var(--text);
+  background: transparent;
+  border-color: var(--border);
+}
+
+.section {
+  margin-top: 34px;
+}
+
+.section h2 {
+  color: var(--accent);
+  font-size: 1.35rem;
+  margin-bottom: 14px;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
 
 .panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 15px;
+  background: rgba(13,13,13,0.92);
+  border: 1px solid var(--border);
+  padding: 20px;
 }
 
-.panel h2 {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: var(--accent);
+.panel h3 {
+  margin: 0 0 12px;
+  color: var(--gold);
+  font-size: 1rem;
 }
 
-.file {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #111;
-    font-size: 0.9rem;
+.panel p, .panel li {
+  color: #d0d0d0;
+  line-height: 1.65;
 }
 
-.status {
-    color: var(--accent);
+.flow {
+  display: grid;
+  gap: 10px;
+}
+
+.step {
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  padding: 14px;
+}
+
+.step strong {
+  color: var(--accent);
+}
+
+.ladder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stage {
+  background: #0b0b0b;
+  border: 1px solid var(--border);
+  padding: 14px;
+}
+
+.stage b {
+  display: block;
+  color: var(--fire);
+  margin-bottom: 6px;
+}
+
+.amount {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.infinity {
+  border-color: var(--fire);
+  background: rgba(255,90,31,0.08);
 }
 
 .warning {
-    color: #ffaa00;
+  color: var(--gold);
+  border-left: 3px solid var(--gold);
+  padding-left: 14px;
+  line-height: 1.7;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.status {
+  border: 1px solid var(--border);
+  padding: 14px;
+  background: #090909;
+}
+
+.status span {
+  display: block;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.status b {
+  color: var(--accent);
 }
 
 .footer {
-    margin-top: 40px;
-    font-size: 0.8rem;
-    color: var(--muted);
+  margin-top: 45px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+@media (max-width: 800px) {
+  .grid, .ladder, .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
-<div class="header">
-    <h1>NEAR-INTERSECT</h1>
-    <div class="sub">Factory Status: ACTIVE | Law Layer: ENFORCED</div>
-</div>
+  <section class="hero">
+    <div class="badge">NEAR PROTOCOL • PRESSURE ECONOMY • VOLCANO ENGINE</div>
+    <h1>NEAR INTERSECT <span>VOLCANO</span></h1>
 
-<div class="grid">
+    <p class="lead">
+      Near Intersect Volcano is a rules-based economic system where activity builds pressure,
+      pressure reaches eruption thresholds, and each eruption represents a deterministic system milestone.
+      No emissions. No random rewards. No hidden control. Structure first.
+    </p>
 
-<div class="panel">
-    <h2>MODULES</h2>
-    <div class="file">OIM.md <span class="status">ACTIVE</span></div>
-    <div class="file">OIM_BINDING.md <span class="status">BOUND</span></div>
-    <div class="file">OIM_INTERFACE.md <span class="status">READY</span></div>
-    <div class="file">OIM_INVARIANTS.md <span class="status">ENFORCED</span></div>
-</div>
-
-<div class="panel">
-    <h2>CORE FILES</h2>
-    <div class="file">truth_guard.rs <span class="status">SECURE</span></div>
-    <div class="file">factory.wasm <span class="status">COMPILED</span></div>
-    <div class="file">contract-wasm.zip <span class="status">ARCHIVED</span></div>
-</div>
-
-<div class="panel">
-    <h2>SYSTEM STATUS</h2>
-    <div class="file">Invariant Integrity <span class="status">100%</span></div>
-    <div class="file">Attack Surface <span class="status">MINIMIZED</span></div>
-    <div class="file">Exploit Vectors <span class="status">0 DETECTED</span></div>
-    <div class="file">Trust Dependency <span class="status">REMOVED</span></div>
-</div>
-
-<div class="panel">
-    <h2>REPO SIGNAL</h2>
-    <div class="file">Duplicate Files <span class="warning">DETECTED</span></div>
-    <div class="file">Structure Consistency <span class="warning">PARTIAL</span></div>
-    <div class="file">Module Registry <span class="status">STABLE</span></div>
-</div>
-
-</div>
-
-<div class="panel" style="margin-top:20px;">
-    <h2>DOCTRINE</h2>
-    <div>
-        Systems must operate under failure.<br><br>
-        Behavior is not trusted.<br><br>
-        Enforcement is absolute.<br><br>
-        Survivability > Optimization.
+    <div class="buttons">
+      <a class="btn" href="#start">ENTER THE SYSTEM</a>
+      <a class="btn secondary" href="#how">HOW IT WORKS</a>
+      <a class="btn secondary" href="#eruptions">ERUPTION STAGES</a>
     </div>
+  </section>
+
+  <section class="section" id="what">
+    <h2>WHAT IT IS</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>THE VOLCANO ENGINE</h3>
+        <p>
+          The system converts activity into pressure. As pressure grows, it moves toward defined eruption stages.
+          Each stage is a public milestone that shows the system advancing under fixed rules.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>THE LAW LAYER</h3>
+        <p>
+          RagTuff-style law governs the structure: fixed rules, enforced routing, permanent OIM logic,
+          and disciplined system behavior. The goal is transparency, not hype.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <h2>HOW IT WORKS</h2>
+    <div class="flow">
+      <div class="step"><strong>1. User enters</strong> — profile, wallet, token path, or system participation.</div>
+      <div class="step"><strong>2. Activity flows</strong> — system activity enters the Volcano engine.</div>
+      <div class="step"><strong>3. 5% system fee routes</strong> — Treasury, Growth, Volcano, Permanent Reserve, and Core Operations.</div>
+      <div class="step"><strong>4. Pressure builds</strong> — Volcano pressure accumulates toward the next eruption stage.</div>
+      <div class="step"><strong>5. Threshold is reached</strong> — the next stage activates when the defined pressure level is met.</div>
+      <div class="step"><strong>6. Eruption event</strong> — the system records the milestone and continues into the next stage.</div>
+    </div>
+  </section>
+
+  <section class="section" id="eruptions">
+    <h2>ERUPTION STAGES: $100,000 TO INFINITY</h2>
+    <p class="lead">
+      The Volcano begins at a $100,000 pressure threshold and expands upward with no hard ceiling.
+      Each stage is designed to feel like a public system event, not a private back-room action.
+    </p>
+
+    <div class="ladder">
+      <div class="stage"><b>Stage 1</b><div class="amount">$100,000</div></div>
+      <div class="stage"><b>Stage 2</b><div class="amount">$250,000</div></div>
+      <div class="stage"><b>Stage 3</b><div class="amount">$500,000</div></div>
+      <div class="stage"><b>Stage 4</b><div class="amount">$1,000,000</div></div>
+      <div class="stage"><b>Stage 5</b><div class="amount">$2,500,000</div></div>
+      <div class="stage"><b>Stage 6</b><div class="amount">$5,000,000</div></div>
+      <div class="stage"><b>Stage 7</b><div class="amount">$10,000,000</div></div>
+      <div class="stage"><b>Stage 8</b><div class="amount">$25,000,000</div></div>
+      <div class="stage"><b>Stage 9</b><div class="amount">$50,000,000</div></div>
+      <div class="stage"><b>Stage 10</b><div class="amount">$100,000,000</div></div>
+      <div class="stage"><b>Stage 11+</b><div class="amount">$250M • $500M • $1B+</div></div>
+      <div class="stage infinity"><b>Final Direction</b><div class="amount">∞ No Hard Ceiling</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>OIM + MODULE GENERATOR</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>PERMANENT OIM</h3>
+        <p>
+          Every token carries the Outpace Inflation Module as a permanent core component.
+          OIM is the constitutional anchor of the system.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>1 / 4 / 17 DOCTRINE</h3>
+        <p>
+          Each token is born with 1 permanent OIM plus 3 generated volcanic modules from a pool of 17.
+          The user does not hand-pick the system law.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="start">
+    <h2>START HERE</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>USER PATH</h3>
+        <ul>
+          <li>Create Profile</li>
+          <li>Connect NEAR Wallet</li>
+          <li>Create Token</li>
+          <li>Join the Volcano system</li>
+          <li>Track pressure and eruption stages</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>SYSTEM PATH</h3>
+        <ul>
+          <li>Profile birth</li>
+          <li>Token creation</li>
+          <li>OIM binding</li>
+          <li>Module generation</li>
+          <li>Treasury pressure routing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>SYSTEM STATUS</h2>
+    <div class="status-grid">
+      <div class="status"><span>Factory Status</span><b>ACTIVE</b></div>
+      <div class="status"><span>Law Layer</span><b>ENFORCED</b></div>
+      <div class="status"><span>OIM</span><b>PERMANENT</b></div>
+      <div class="status"><span>Volcano Direction</span><b>$100K → ∞</b></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>IMPORTANT NOTICE</h2>
+    <div class="panel">
+      <p class="warning">
+        Near Intersect Volcano does not guarantee profit, investment return, token price increase,
+        or yield. It is a rules-based participation and pressure system. All users should understand
+        the risks of blockchain systems before participating.
+      </p>
+    </div>
+  </section>
+
+  <div class="footer">
+    J. Moore | Near Intersect Volcano | System Architecture Layer
+  </div>
+
 </div>
-
-<div class="footer">
-    J. Moore | System Architecture Layer
-</div>
-
-</div>
-
-<script>
-// subtle "alive" effect
-setInterval(() => {
-    const statuses = document.querySelectorAll('.status');
-    statuses.forEach(s => {
-        s.style.opacity = (Math.random() * 0.5 + 0.5);
-    });
-}, 1000);
-</script>
-
 </body>
 </html>
