@@ -6,366 +6,554 @@
 <title>Near Intersect Volcano</title>
 
 <style>
-:root {
-  --bg: #050505;
-  --panel: #0d0d0d;
-  --panel2: #111;
-  --border: #242424;
-  --text: #f2f2f2;
-  --muted: #9a9a9a;
-  --accent: #00ffcc;
-  --fire: #ff5a1f;
-  --gold: #ffaa00;
-  --red: #ff2e2e;
+:root{
+  --bg:#040505;
+  --panel:#0b0d0d;
+  --panel2:#111414;
+  --line:#262b2b;
+  --cyan:#00ffd5;
+  --orange:#ff9f1c;
+  --red:#ff3b1f;
+  --text:#f4f4f4;
+  --muted:#aaa;
+  --green:#39ff88;
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
   background:
-    radial-gradient(circle at top, rgba(255,90,31,0.18), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(0,255,204,0.08), transparent 30%),
-    var(--bg);
-  color: var(--text);
+    radial-gradient(circle at top,#08201d 0,#040505 38%,#000 100%);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
 }
-
-.container {
-  max-width: 1150px;
-  margin: auto;
-  padding: 28px 18px 60px;
+main{max-width:1150px;margin:auto;padding:28px 18px}
+section{margin:54px 0}
+h1,h2,h3{letter-spacing:.04em}
+h1{font-size:44px;color:var(--cyan);margin:0 0 18px}
+h2{font-size:30px;color:var(--cyan)}
+h3{color:var(--orange)}
+p,li{font-size:18px;line-height:1.55;color:#d5d5d5}
+a{color:inherit;text-decoration:none}
+.panel{
+  border:1px solid var(--line);
+  background:rgba(10,12,12,.88);
+  padding:24px;
+  border-radius:18px;
+  margin:18px 0;
 }
-
-.hero {
-  padding: 60px 0 42px;
-  border-bottom: 1px solid var(--border);
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(0,0,0,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
 }
-
-.badge {
-  display: inline-block;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  padding: 8px 12px;
-  margin-bottom: 20px;
-  font-size: 0.78rem;
-  letter-spacing: 1px;
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
 }
-
-h1 {
-  font-size: clamp(2.3rem, 8vw, 5.4rem);
-  line-height: 0.95;
-  margin: 0;
-  letter-spacing: -3px;
+.brand{font-weight:900;color:var(--cyan)}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap}
+.navlinks a{
+  color:#ddd;
+  font-size:14px;
+  border:1px solid var(--line);
+  padding:8px 10px;
+  border-radius:999px;
 }
-
-h1 span { color: var(--fire); }
-
-.lead {
-  max-width: 850px;
-  color: #d7d7d7;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin: 24px 0;
+.counter{
+  font-family:monospace;
+  color:var(--green);
+  border:1px solid var(--line);
+  padding:10px 12px;
+  border-radius:12px;
+  background:#050505;
+  font-size:14px;
 }
-
-.buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 25px;
+.hero{
+  min-height:78vh;
+  display:grid;
+  align-items:center;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
 }
-
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--bg);
-  background: var(--accent);
-  padding: 13px 18px;
-  font-weight: 800;
-  border: 1px solid var(--accent);
+.badge{
+  display:inline-block;
+  color:#000;
+  background:var(--cyan);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:900;
+  margin-bottom:18px;
 }
-
-.btn.secondary {
-  color: var(--text);
-  background: transparent;
-  border-color: var(--border);
+.hero h1{font-size:58px}
+.hero p{font-size:20px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.btn{
+  border:0;
+  background:var(--cyan);
+  color:#000;
+  padding:16px 18px;
+  border-radius:12px;
+  font-weight:900;
+  cursor:pointer;
+  font-size:16px;
 }
-
-.section {
-  margin-top: 34px;
+.btn.secondary{
+  background:#111;
+  color:var(--cyan);
+  border:1px solid var(--cyan);
 }
-
-.section h2 {
-  color: var(--accent);
-  font-size: 1.35rem;
-  margin-bottom: 14px;
+.notice{
+  border-left:5px solid var(--orange);
+  background:#120d05;
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
-
-.panel {
-  background: rgba(13,13,13,0.92);
-  border: 1px solid var(--border);
-  padding: 20px;
+.card{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:20px;
+  border-radius:16px;
 }
-
-.panel h3 {
-  margin: 0 0 12px;
-  color: var(--gold);
-  font-size: 1rem;
+.card span{display:block;color:var(--muted);font-size:14px;margin-bottom:8px}
+.card strong{font-size:26px;color:var(--cyan)}
+input,select,textarea{
+  width:100%;
+  padding:15px;
+  margin:8px 0 14px;
+  background:#050505;
+  border:1px solid #333;
+  color:#fff;
+  border-radius:10px;
+  font-size:16px;
 }
-
-.panel p, .panel li {
-  color: #d0d0d0;
-  line-height: 1.65;
+label{color:#ccc;font-weight:700}
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
 }
-
-.flow {
-  display: grid;
-  gap: 10px;
+.profile-output{
+  display:none;
+  border:1px solid var(--cyan);
+  background:#02120f;
+  margin-top:18px;
 }
-
-.step {
-  border: 1px solid var(--border);
-  background: var(--panel2);
-  padding: 14px;
+.profile-output.active{display:block}
+.small{font-size:14px;color:#aaa}
+.status-pill{
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#08251f;
+  color:var(--green);
+  border:1px solid #145944;
+  font-weight:900;
 }
-
-.step strong {
-  color: var(--accent);
+.volcano-wrap{
+  position:relative;
+  min-height:440px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at center 40%,rgba(255,90,0,.25),transparent 18%),
+    radial-gradient(circle at center bottom,rgba(0,255,213,.1),transparent 45%),
+    #050606;
+  overflow:hidden;
 }
-
-.ladder {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+.volcano{
+  position:absolute;
+  left:50%;
+  bottom:70px;
+  transform:translateX(-50%);
+  width:0;
+  height:0;
+  border-left:160px solid transparent;
+  border-right:160px solid transparent;
+  border-bottom:260px solid #1b1b1b;
+  filter:drop-shadow(0 0 22px rgba(255,90,0,.55));
 }
-
-.stage {
-  background: #0b0b0b;
-  border: 1px solid var(--border);
-  padding: 14px;
+.volcano:before{
+  content:"";
+  position:absolute;
+  left:-36px;
+  top:70px;
+  width:72px;
+  height:190px;
+  background:linear-gradient(#fff200,#ff8c00,#ff2500);
+  border-radius:50px;
+  box-shadow:0 0 40px #ff6a00;
 }
-
-.stage b {
-  display: block;
-  color: var(--fire);
-  margin-bottom: 6px;
+.lava{
+  position:absolute;
+  left:50%;
+  top:40px;
+  width:16px;
+  height:150px;
+  transform:translateX(-50%);
+  background:linear-gradient(#fff,#ffb300,#ff3b1f);
+  border-radius:20px;
+  box-shadow:0 0 35px #ff6a00;
+  animation:pulse 1.5s infinite alternate;
 }
-
-.amount {
-  font-size: 1.1rem;
-  color: var(--text);
+@keyframes pulse{
+  from{height:115px;opacity:.75}
+  to{height:175px;opacity:1}
 }
-
-.infinity {
-  border-color: var(--fire);
-  background: rgba(255,90,31,0.08);
+.bubble{
+  position:absolute;
+  border:1px solid rgba(0,255,213,.5);
+  background:rgba(0,255,213,.08);
+  color:#fff;
+  border-radius:999px;
+  padding:15px 18px;
+  font-weight:900;
 }
-
-.warning {
-  color: var(--gold);
-  border-left: 3px solid var(--gold);
-  padding-left: 14px;
-  line-height: 1.7;
+.b1{left:7%;top:70px}
+.b2{right:7%;top:70px}
+.b3{left:9%;bottom:76px}
+.b4{right:9%;bottom:76px}
+.flowline{
+  position:absolute;
+  left:15%;
+  right:15%;
+  bottom:55px;
+  height:3px;
+  background:linear-gradient(90deg,var(--cyan),var(--orange),var(--red));
 }
-
-.status-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+.flow-steps{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-top:18px;
 }
-
-.status {
-  border: 1px solid var(--border);
-  padding: 14px;
-  background: #090909;
+.step{
+  border:1px solid var(--line);
+  padding:16px;
+  border-radius:14px;
+  background:#080909;
 }
-
-.status span {
-  display: block;
-  color: var(--muted);
-  font-size: .75rem;
+.step b{color:var(--orange)}
+.chat-box{
+  min-height:210px;
+  border:1px dashed #444;
+  border-radius:16px;
+  padding:18px;
+  background:#070707;
 }
-
-.status b {
-  color: var(--accent);
+.chat-message{
+  border-bottom:1px solid #222;
+  padding:10px 0;
+  color:#ccc;
 }
-
-.footer {
-  margin-top: 45px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: .85rem;
+.footer{
+  border-top:1px solid var(--line);
+  padding:28px 0;
+  color:#888;
+  text-align:center;
 }
-
-@media (max-width: 800px) {
-  .grid, .ladder, .status-grid {
-    grid-template-columns: 1fr;
-  }
-
-  h1 {
-    letter-spacing: -1px;
-  }
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .hero h1{font-size:42px}
+  .grid,.form-grid,.flow-steps{grid-template-columns:1fr}
+  .nav{align-items:flex-start;flex-direction:column}
+  .volcano{border-left-width:105px;border-right-width:105px;border-bottom-width:200px}
+  .b1,.b2,.b3,.b4{position:relative;left:auto;right:auto;top:auto;bottom:auto;display:block;margin:10px}
+  .volcano-wrap{padding-top:18px}
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <section class="hero">
-    <div class="badge">NEAR PROTOCOL • PRESSURE ECONOMY • VOLCANO ENGINE</div>
-    <h1>NEAR INTERSECT <span>VOLCANO</span></h1>
+<header class="topbar">
+  <div class="nav">
+    <div class="brand">NEAR INTERSECT VOLCANO</div>
+    <div class="counter">PUBLIC VIEW COUNT: <span id="viewCount">0000000000006846</span></div>
+    <div class="navlinks">
+      <a href="#start">Start</a>
+      <a href="#profile">Profile</a>
+      <a href="#volcano">Volcano</a>
+      <a href="#treasury">Treasury</a>
+      <a href="#chat">Chat</a>
+    </div>
+  </div>
+</header>
 
-    <p class="lead">
-      Near Intersect Volcano is a rules-based economic system where activity builds pressure,
-      pressure reaches eruption thresholds, and each eruption represents a deterministic system milestone.
-      No emissions. No random rewards. No hidden control. Structure first.
+<main>
+
+<section class="hero">
+  <div>
+    <div class="badge">BETA DEVELOPMENT — PUBLIC BUILD</div>
+    <h1>Stablecoin Pressure Engine. Profile First. Token Later.</h1>
+    <p>
+      Near Intersect Volcano is being built as a deterministic economic system where a participant profile becomes the foundation for a future token/pie with permanent OIM protection.
     </p>
-
-    <div class="buttons">
-      <a class="btn" href="#start">ENTER THE SYSTEM</a>
-      <a class="btn secondary" href="#how">HOW IT WORKS</a>
-      <a class="btn secondary" href="#eruptions">ERUPTION STAGES</a>
-    </div>
-  </section>
-
-  <section class="section" id="what">
-    <h2>WHAT IT IS</h2>
-    <div class="grid">
-      <div class="panel">
-        <h3>THE VOLCANO ENGINE</h3>
-        <p>
-          The system converts activity into pressure. As pressure grows, it moves toward defined eruption stages.
-          Each stage is a public milestone that shows the system advancing under fixed rules.
-        </p>
-      </div>
-
-      <div class="panel">
-        <h3>THE LAW LAYER</h3>
-        <p>
-          RagTuff-style law governs the structure: fixed rules, enforced routing, permanent OIM logic,
-          and disciplined system behavior. The goal is transparency, not hype.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="how">
-    <h2>HOW IT WORKS</h2>
-    <div class="flow">
-      <div class="step"><strong>1. User enters</strong> — profile, wallet, token path, or system participation.</div>
-      <div class="step"><strong>2. Activity flows</strong> — system activity enters the Volcano engine.</div>
-      <div class="step"><strong>3. 5% system fee routes</strong> — Treasury, Growth, Volcano, Permanent Reserve, and Core Operations.</div>
-      <div class="step"><strong>4. Pressure builds</strong> — Volcano pressure accumulates toward the next eruption stage.</div>
-      <div class="step"><strong>5. Threshold is reached</strong> — the next stage activates when the defined pressure level is met.</div>
-      <div class="step"><strong>6. Eruption event</strong> — the system records the milestone and continues into the next stage.</div>
-    </div>
-  </section>
-
-  <section class="section" id="eruptions">
-    <h2>ERUPTION STAGES: $100,000 TO INFINITY</h2>
-    <p class="lead">
-      The Volcano begins at a $100,000 pressure threshold and expands upward with no hard ceiling.
-      Each stage is designed to feel like a public system event, not a private back-room action.
+    <p class="small">
+      This page is informational and developmental. Full on-chain interaction, wallet execution, token creation, and distribution claims activate only when the production launch is complete.
     </p>
-
-    <div class="ladder">
-      <div class="stage"><b>Stage 1</b><div class="amount">$100,000</div></div>
-      <div class="stage"><b>Stage 2</b><div class="amount">$250,000</div></div>
-      <div class="stage"><b>Stage 3</b><div class="amount">$500,000</div></div>
-      <div class="stage"><b>Stage 4</b><div class="amount">$1,000,000</div></div>
-      <div class="stage"><b>Stage 5</b><div class="amount">$2,500,000</div></div>
-      <div class="stage"><b>Stage 6</b><div class="amount">$5,000,000</div></div>
-      <div class="stage"><b>Stage 7</b><div class="amount">$10,000,000</div></div>
-      <div class="stage"><b>Stage 8</b><div class="amount">$25,000,000</div></div>
-      <div class="stage"><b>Stage 9</b><div class="amount">$50,000,000</div></div>
-      <div class="stage"><b>Stage 10</b><div class="amount">$100,000,000</div></div>
-      <div class="stage"><b>Stage 11+</b><div class="amount">$250M • $500M • $1B+</div></div>
-      <div class="stage infinity"><b>Final Direction</b><div class="amount">∞ No Hard Ceiling</div></div>
+    <div class="cta-row">
+      <a class="btn" href="#profile">Create Profile</a>
+      <a class="btn secondary" href="#volcano">View Volcano Flow</a>
     </div>
-  </section>
-
-  <section class="section">
-    <h2>OIM + MODULE GENERATOR</h2>
-    <div class="grid">
-      <div class="panel">
-        <h3>PERMANENT OIM</h3>
-        <p>
-          Every token carries the Outpace Inflation Module as a permanent core component.
-          OIM is the constitutional anchor of the system.
-        </p>
-      </div>
-
-      <div class="panel">
-        <h3>1 / 4 / 17 DOCTRINE</h3>
-        <p>
-          Each token is born with 1 permanent OIM plus 3 generated volcanic modules from a pool of 17.
-          The user does not hand-pick the system law.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="start">
-    <h2>START HERE</h2>
-    <div class="grid">
-      <div class="panel">
-        <h3>USER PATH</h3>
-        <ul>
-          <li>Create Profile</li>
-          <li>Connect NEAR Wallet</li>
-          <li>Create Token</li>
-          <li>Join the Volcano system</li>
-          <li>Track pressure and eruption stages</li>
-        </ul>
-      </div>
-
-      <div class="panel">
-        <h3>SYSTEM PATH</h3>
-        <ul>
-          <li>Profile birth</li>
-          <li>Token creation</li>
-          <li>OIM binding</li>
-          <li>Module generation</li>
-          <li>Treasury pressure routing</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>SYSTEM STATUS</h2>
-    <div class="status-grid">
-      <div class="status"><span>Factory Status</span><b>ACTIVE</b></div>
-      <div class="status"><span>Law Layer</span><b>ENFORCED</b></div>
-      <div class="status"><span>OIM</span><b>PERMANENT</b></div>
-      <div class="status"><span>Volcano Direction</span><b>$100K → ∞</b></div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>IMPORTANT NOTICE</h2>
-    <div class="panel">
-      <p class="warning">
-        Near Intersect Volcano does not guarantee profit, investment return, token price increase,
-        or yield. It is a rules-based participation and pressure system. All users should understand
-        the risks of blockchain systems before participating.
-      </p>
-    </div>
-  </section>
-
-  <div class="footer">
-    J. Moore | Near Intersect Volcano | System Architecture Layer
   </div>
 
-</div>
+  <div class="panel">
+    <h3>System Status</h3>
+    <div class="grid" style="grid-template-columns:1fr">
+      <div class="card"><span>Factory Status</span><strong>DEVELOPMENT</strong></div>
+      <div class="card"><span>Law Layer</span><strong>ENFORCED DESIGN</strong></div>
+      <div class="card"><span>OIM</span><strong>PERMANENT</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <h2>Start Here</h2>
+  <div class="panel notice">
+    <h3>This is the entry point.</h3>
+    <p>
+      The old section explained a path but gave users nothing to do. This version lets a user create a local development profile now. That profile is not yet an on-chain token, not a wallet balance, and not a financial promise. It is an early participation record that prepares the user for the future token/pie layer.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="card"><span>Step 1</span><strong>Create Profile</strong><p>Build your early participant record.</p></div>
+    <div class="card"><span>Step 2</span><strong>Connect Wallet</strong><p>Coming later through NEAR wallet integration.</p></div>
+    <div class="card"><span>Step 3</span><strong>Token/Pie Birth</strong><p>Profile becomes future token foundation with OIM.</p></div>
+  </div>
+</section>
+
+<section id="profile">
+  <h2>Create Your Volcano Profile</h2>
+  <div class="panel">
+    <p>
+      This profile is stored locally in this browser for development. Later, the production system can bind the profile to a NEAR wallet, token ID, pie ID, OIM module, treasury view, and eruption eligibility status.
+    </p>
+
+    <div class="form-grid">
+      <div>
+        <label>Profile Name</label>
+        <input id="profileName" placeholder="Example: Jimmy" />
+      </div>
+      <div>
+        <label>NEAR Account / Wallet</label>
+        <input id="nearAccount" placeholder="example.near / optional for now" />
+      </div>
+      <div>
+        <label>Investor Type</label>
+        <select id="investorType">
+          <option>Early Observer</option>
+          <option>Long-Term Builder</option>
+          <option>Stablecoin Participant</option>
+          <option>Developer / Tester</option>
+          <option>Future Token Holder</option>
+        </select>
+      </div>
+      <div>
+        <label>Participation Goal</label>
+        <select id="goal">
+          <option>Learn the system</option>
+          <option>Track treasury growth</option>
+          <option>Join when launched</option>
+          <option>Build with the protocol</option>
+        </select>
+      </div>
+    </div>
+
+    <label>Profile Notes</label>
+    <textarea id="notes" rows="4" placeholder="What do you want your profile to represent inside the Volcano system?"></textarea>
+
+    <button class="btn" onclick="createProfile()">CREATE DEVELOPMENT PROFILE</button>
+
+    <div id="profileOutput" class="panel profile-output">
+      <h3>Profile Created</h3>
+      <p><b>Name:</b> <span id="outName"></span></p>
+      <p><b>Wallet:</b> <span id="outWallet"></span></p>
+      <p><b>Investor Type:</b> <span id="outType"></span></p>
+      <p><b>Goal:</b> <span id="outGoal"></span></p>
+      <p><b>Future Role:</b> Profile → Token/Pie → Permanent OIM → Volcano participation layer.</p>
+      <p><span class="status-pill">LOCAL DEVELOPMENT RECORD CREATED</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="treasury">
+  <h2>Treasury + Account Preview</h2>
+  <div class="grid">
+    <div class="card">
+      <span>Volcano Treasury</span>
+      <strong>$0.00</strong>
+      <p>Placeholder until live treasury data is connected.</p>
+    </div>
+    <div class="card">
+      <span>Your Account Amount</span>
+      <strong id="userAmount">$0.00</strong>
+      <p>Future user balance and claim preview will appear here.</p>
+    </div>
+    <div class="card">
+      <span>Next Eruption Target</span>
+      <strong>$100,000</strong>
+      <p>First development milestone target shown for education.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Distribution Effect / Eruption Preview</h3>
+    <p>
+      When the production protocol is live, this section is where users will see treasury pressure, active participant count, eruption status, and their eligible share. No payout is promised by this website preview.
+    </p>
+  </div>
+</section>
+
+<section id="volcano">
+  <h2>Volcano Workings — Visual Flow</h2>
+
+  <div class="volcano-wrap">
+    <div class="bubble b1">USDC Entry</div>
+    <div class="bubble b2">USDT Entry</div>
+    <div class="bubble b3">Treasury</div>
+    <div class="bubble b4">Eruption Pool</div>
+    <div class="lava"></div>
+    <div class="volcano"></div>
+    <div class="flowline"></div>
+  </div>
+
+  <div class="flow-steps">
+    <div class="step"><b>1.</b><br>Profile is created.</div>
+    <div class="step"><b>2.</b><br>Wallet connection comes online.</div>
+    <div class="step"><b>3.</b><br>Profile becomes token/pie foundation.</div>
+    <div class="step"><b>4.</b><br>OIM binds permanently.</div>
+    <div class="step"><b>5.</b><br>Pressure builds toward eruption.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Flow Engine — Development Model</h2>
+  <div class="grid">
+    <div class="card"><span>Flow Fee</span><strong>5%</strong><p>Current design model for in/out protocol flow.</p></div>
+    <div class="card"><span>Lock Design</span><strong>2 Years</strong><p>Long-cycle discipline layer.</p></div>
+    <div class="card"><span>Exit Window</span><strong>7 Days</strong><p>Future controlled exit window design.</p></div>
+  </div>
+
+  <div class="panel">
+    <h3>Routing Concept</h3>
+    <p>
+      Treasury, Growth, Volcano Pressure, Permanent Reserve, and Core Operations are separated so visitors understand the system is not random. The final production contract must match the final public model before launch.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Token / Pie Doctrine</h2>
+  <div class="panel">
+    <p>
+      Each future participant token is treated as a Pie. Every Pie carries permanent OIM as its anchor module. The profile created today is the front-facing identity layer that can later become the foundation for the token/pie record.
+    </p>
+    <ul>
+      <li>Profile first.</li>
+      <li>Wallet second.</li>
+      <li>Token/Pie birth third.</li>
+      <li>OIM permanently attached.</li>
+      <li>Volcano pressure and eruption view activated after full launch.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="chat">
+  <h2>Global Chat — Future Entry Space</h2>
+  <div class="chat-box">
+    <div class="chat-message"><b>System:</b> Global participant chat is reserved for a later development phase.</div>
+    <div class="chat-message"><b>System:</b> This area will eventually allow active participants to communicate during treasury pressure cycles and eruption windows.</div>
+    <div class="chat-message"><b>Status:</b> Placeholder only. No live chat is active yet.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Important Development Notice</h2>
+  <div class="panel notice">
+    <p>
+      Near Intersect Volcano is still undergoing development before full public launch. Current profile creation is a local browser-based participation preview. It does not create an on-chain token, does not connect to a live treasury, does not guarantee returns, and does not activate claims.
+    </p>
+    <p>
+      The purpose of this page is to let users understand the system, create an early profile, view the Volcano model, and follow the build as it becomes real over time.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  Near Intersect Volcano — Development Build • Profile → Token/Pie → OIM → Volcano
+</footer>
+
+<script>
+const STARTING_VIEW_COUNT = "0000000000006846";
+
+function createProfile(){
+  const name = document.getElementById("profileName").value.trim();
+  const wallet = document.getElementById("nearAccount").value.trim();
+  const type = document.getElementById("investorType").value;
+  const goal = document.getElementById("goal").value;
+  const notes = document.getElementById("notes").value.trim();
+
+  if(!name){
+    alert("Enter a profile name first.");
+    return;
+  }
+
+  const profile = {
+    profileName:name,
+    nearAccount: wallet || "Not connected yet",
+    investorType:type,
+    goal:goal,
+    notes:notes,
+    createdAt:new Date().toISOString(),
+    status:"Development profile only",
+    futureRole:"Profile becomes token/pie foundation with permanent OIM"
+  };
+
+  localStorage.setItem("nearIntersectVolcanoProfile", JSON.stringify(profile));
+
+  document.getElementById("outName").textContent = profile.profileName;
+  document.getElementById("outWallet").textContent = profile.nearAccount;
+  document.getElementById("outType").textContent = profile.investorType;
+  document.getElementById("outGoal").textContent = profile.goal;
+  document.getElementById("profileOutput").classList.add("active");
+}
+
+function loadProfile(){
+  const saved = localStorage.getItem("nearIntersectVolcanoProfile");
+  if(!saved) return;
+
+  const profile = JSON.parse(saved);
+  document.getElementById("profileName").value = profile.profileName || "";
+  document.getElementById("nearAccount").value = profile.nearAccount === "Not connected yet" ? "" : profile.nearAccount;
+  document.getElementById("investorType").value = profile.investorType || "Early Observer";
+  document.getElementById("goal").value = profile.goal || "Learn the system";
+  document.getElementById("notes").value = profile.notes || "";
+
+  document.getElementById("outName").textContent = profile.profileName || "";
+  document.getElementById("outWallet").textContent = profile.nearAccount || "Not connected yet";
+  document.getElementById("outType").textContent = profile.investorType || "";
+  document.getElementById("outGoal").textContent = profile.goal || "";
+  document.getElementById("profileOutput").classList.add("active");
+}
+
+document.getElementById("viewCount").textContent = STARTING_VIEW_COUNT;
+loadProfile();
+</script>
+
 </body>
 </html>
