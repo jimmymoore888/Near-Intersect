@@ -9,6 +9,7 @@
 :root{
   --bg:#040505;
   --panel:#0b0d0d;
+  --panel2:#111414;
   --line:#262b2b;
   --cyan:#00ffd5;
   --orange:#ff9f1c;
@@ -25,7 +26,7 @@ body{
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-main{max-width:1150px;margin:auto;padding:28px 18px}
+main{max-width:1180px;margin:auto;padding:28px 18px}
 section{margin:54px 0}
 h1,h2,h3{letter-spacing:.04em}
 h1{font-size:54px;color:var(--cyan);margin:0 0 18px}
@@ -40,44 +41,26 @@ a{color:inherit;text-decoration:none}
   border-radius:18px;
   margin:18px 0;
 }
-.notice{
-  border-left:5px solid var(--orange);
-  background:#120d05;
-}
+.notice{border-left:5px solid var(--orange);background:#120d05}
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:20;
+  position:sticky;top:0;z-index:20;
   background:rgba(0,0,0,.88);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
 .nav{
-  max-width:1150px;
-  margin:auto;
-  padding:14px 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:14px;
+  max-width:1180px;margin:auto;padding:14px 18px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
 }
 .brand{font-weight:900;color:var(--cyan)}
 .navlinks{display:flex;gap:10px;flex-wrap:wrap}
 .navlinks a{
-  color:#ddd;
-  font-size:14px;
-  border:1px solid var(--line);
-  padding:8px 10px;
-  border-radius:999px;
+  color:#ddd;font-size:14px;border:1px solid var(--line);
+  padding:8px 10px;border-radius:999px;
 }
 .counter{
-  font-family:monospace;
-  color:var(--green);
-  border:1px solid var(--line);
-  padding:10px 12px;
-  border-radius:12px;
-  background:#050505;
-  font-size:14px;
+  font-family:monospace;color:var(--green);border:1px solid var(--line);
+  padding:10px 12px;border-radius:12px;background:#050505;font-size:14px;
 }
 .hero{
   min-height:78vh;
@@ -87,37 +70,29 @@ a{color:inherit;text-decoration:none}
   gap:28px;
 }
 .badge{
-  display:inline-block;
-  color:#000;
-  background:var(--cyan);
-  padding:8px 12px;
-  border-radius:999px;
-  font-weight:900;
-  margin-bottom:18px;
+  display:inline-block;color:#000;background:var(--cyan);
+  padding:8px 12px;border-radius:999px;font-weight:900;margin-bottom:18px;
 }
 .hero p{font-size:20px}
 .small{font-size:14px;color:#aaa}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
 .btn{
-  border:0;
-  background:var(--cyan);
-  color:#000;
-  padding:16px 18px;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
-  font-size:16px;
-  display:inline-block;
+  border:0;background:var(--cyan);color:#000;
+  padding:16px 18px;border-radius:12px;font-weight:900;
+  cursor:pointer;font-size:16px;display:inline-block;
 }
 .btn.secondary{
-  background:#111;
-  color:var(--cyan);
-  border:1px solid var(--cyan);
+  background:#111;color:var(--cyan);border:1px solid var(--cyan);
 }
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:16px;
+}
+.roadmap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
 }
 .card{
   border:1px solid var(--line);
@@ -125,25 +100,14 @@ a{color:inherit;text-decoration:none}
   padding:20px;
   border-radius:16px;
 }
-.card span{
-  display:block;
-  color:var(--muted);
-  font-size:14px;
-  margin-bottom:8px;
-}
-.card strong{
-  font-size:26px;
-  color:var(--cyan);
-}
+.card span{display:block;color:var(--muted);font-size:14px;margin-bottom:8px}
+.card strong{font-size:25px;color:var(--cyan)}
+.card .dist{color:var(--green)}
+.card .res{color:var(--orange)}
 input,select,textarea{
-  width:100%;
-  padding:15px;
-  margin:8px 0 14px;
-  background:#050505;
-  border:1px solid #333;
-  color:#fff;
-  border-radius:10px;
-  font-size:16px;
+  width:100%;padding:15px;margin:8px 0 14px;
+  background:#050505;border:1px solid #333;color:#fff;
+  border-radius:10px;font-size:16px;
 }
 label{color:#ccc;font-weight:700}
 .form-grid{
@@ -159,13 +123,9 @@ label{color:#ccc;font-weight:700}
 }
 .profile-output.active{display:block}
 .status-pill{
-  display:inline-block;
-  padding:7px 10px;
-  border-radius:999px;
-  background:#08251f;
-  color:var(--green);
-  border:1px solid #145944;
-  font-weight:900;
+  display:inline-block;padding:7px 10px;border-radius:999px;
+  background:#08251f;color:var(--green);
+  border:1px solid #145944;font-weight:900;
 }
 .visual-img{
   width:100%;
@@ -173,12 +133,32 @@ label{color:#ccc;font-weight:700}
   border:1px solid var(--line);
   box-shadow:0 0 35px rgba(0,255,213,.15);
 }
-.roadmap{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
+.meter{
+  width:100%;
+  height:22px;
+  border:1px solid var(--line);
+  background:#050505;
+  border-radius:999px;
+  overflow:hidden;
+  margin:12px 0;
 }
-.roadmap .card strong{font-size:22px}
+.meter-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--cyan),var(--orange),var(--red));
+  transition:width .4s ease;
+}
+.eruption-active{
+  animation:eruptionPulse 1s infinite alternate;
+}
+@keyframes eruptionPulse{
+  from{box-shadow:0 0 0 rgba(255,80,0,0)}
+  to{box-shadow:0 0 45px rgba(255,80,0,.75)}
+}
+.audio-note{
+  color:#aaa;
+  font-size:14px;
+}
 .chat-box{
   min-height:210px;
   border:1px dashed #444;
@@ -197,7 +177,7 @@ label{color:#ccc;font-weight:700}
   color:#888;
   text-align:center;
 }
-@media(max-width:820px){
+@media(max-width:850px){
   .hero{grid-template-columns:1fr}
   h1{font-size:38px}
   .grid,.form-grid,.roadmap{grid-template-columns:1fr}
@@ -207,6 +187,8 @@ label{color:#ccc;font-weight:700}
 </head>
 
 <body>
+
+<audio id="eruptionAudio" src="eruption-theme.mp3" preload="auto"></audio>
 
 <header class="topbar">
   <div class="nav">
@@ -230,14 +212,14 @@ label{color:#ccc;font-weight:700}
     <div class="badge">BETA DEVELOPMENT — PUBLIC BUILD</div>
     <h1>Stablecoin Pressure Engine. Profile First. Token Later.</h1>
     <p>
-      Near Intersect Volcano is being built as a deterministic economic system where a participant profile becomes the foundation for a future token/pie with permanent OIM protection.
+      Near Intersect Volcano is being built as a deterministic pressure system where a participant profile becomes the foundation for a future token/pie with permanent OIM protection.
     </p>
     <p class="small">
       This page is informational and developmental. Full on-chain interaction, wallet execution, token creation, treasury balances, and distribution claims activate only when the production launch is complete.
     </p>
     <div class="cta-row">
       <a class="btn" href="#profile">Create Profile</a>
-      <a class="btn secondary" href="#roadmap">View Eruption Roadmap</a>
+      <a class="btn secondary" href="#roadmap">View Eruption Law</a>
     </div>
   </div>
 
@@ -254,9 +236,9 @@ label{color:#ccc;font-weight:700}
 <section id="start">
   <h2>Start Here</h2>
   <div class="panel notice">
-    <h3>This is the entry point.</h3>
+    <h3>This is the corrected entry point.</h3>
     <p>
-      This version lets a visitor create a local development profile now. That profile is not yet an on-chain token, not a wallet balance, and not a financial promise. It is an early participation record that prepares the user for the future token/pie layer.
+      The only user-click action is profile creation. Eruptions are not user-triggered. They happen automatically only when system pressure reaches the active milestone.
     </p>
   </div>
 
@@ -271,7 +253,7 @@ label{color:#ccc;font-weight:700}
   <h2>Create Your Volcano Profile</h2>
   <div class="panel">
     <p>
-      This profile is stored locally in this browser for development. Later, the production system can bind the profile to a NEAR wallet, token ID, pie ID, OIM module, treasury view, and eruption eligibility status.
+      This profile is stored locally in this browser for development. Later, production can bind it to a NEAR wallet, token ID, pie ID, OIM module, treasury view, and eruption eligibility status.
     </p>
 
     <div class="form-grid">
@@ -322,11 +304,12 @@ label{color:#ccc;font-weight:700}
 </section>
 
 <section id="treasury">
-  <h2>Treasury + Account Preview</h2>
+  <h2>Treasury + Pressure Monitor</h2>
+
   <div class="grid">
     <div class="card">
       <span>Volcano Treasury</span>
-      <strong>$0.00</strong>
+      <strong id="treasuryAmount">$0.00</strong>
       <p>Placeholder until live treasury data is connected.</p>
     </div>
     <div class="card">
@@ -335,16 +318,22 @@ label{color:#ccc;font-weight:700}
       <p>Future user balance and claim preview will appear here.</p>
     </div>
     <div class="card">
-      <span>Next Eruption Target</span>
-      <strong>$100,000 → ∞</strong>
-      <p>Milestones expand upward as the system grows.</p>
+      <span>Active Milestone</span>
+      <strong id="activeMilestone">$100,000</strong>
+      <p>Pressure must reach this level before eruption activates.</p>
     </div>
   </div>
 
-  <div class="panel">
-    <h3>Distribution Effect / Eruption Preview</h3>
-    <p>
-      When the production protocol is live, this section is where users will see treasury pressure, active participant count, eruption status, and their eligible share. No payout is promised by this website preview.
+  <div id="systemPanel" class="panel">
+    <h3>Automatic Eruption State</h3>
+    <p>Status: <strong id="systemStatus">BUILDING PRESSURE</strong></p>
+    <p>Current Pressure: <strong id="pressureAmount">$0</strong></p>
+    <div class="meter"><div id="pressureFill" class="meter-fill"></div></div>
+    <p>Current Cycle Distribution: <strong id="cycleDistribution">$75,000</strong></p>
+    <p>Current Cycle Reserve: <strong id="cycleReserve">$25,000</strong></p>
+    <p>7:09 Phase: <strong id="eruptionPhase">Waiting for milestone</strong></p>
+    <p class="audio-note">
+      The eruption song is connected as <b>eruption-theme.mp3</b>. Some browsers may block audio until the visitor has interacted with the page, but the system law remains automatic.
     </p>
   </div>
 </section>
@@ -353,53 +342,19 @@ label{color:#ccc;font-weight:700}
   <h2>Eruption Milestone Payout Distribution Cycles</h2>
 
   <div class="panel notice">
-    <h3>From $100,000 to Trillions to Infinity</h3>
+    <h3>Locked Rule</h3>
     <p>
-      The Volcano does not erupt randomly. Each cycle is designed around a pressure milestone. When the system reaches a threshold, the eruption cycle can activate according to the final production contract rules. After that, the next threshold rises.
+      Genesis Eruption: $100,000 reached → $75,000 distributed → $25,000 reserved.
+      Standard Eruptions after that use 60% distribution and 40% reserve, continuing into the trillions and then to infinity.
     </p>
   </div>
 
-  <div class="roadmap">
-    <div class="card"><span>Cycle 1</span><strong>$100,000</strong><p>Genesis eruption threshold.</p></div>
-    <div class="card"><span>Cycle 2</span><strong>$250,000</strong><p>Early pressure expansion.</p></div>
-    <div class="card"><span>Cycle 3</span><strong>$500,000</strong><p>Half-million milestone.</p></div>
-    <div class="card"><span>Cycle 4</span><strong>$1,000,000</strong><p>First million-dollar cycle.</p></div>
-
-    <div class="card"><span>Cycle 5</span><strong>$2,500,000</strong><p>Acceleration threshold.</p></div>
-    <div class="card"><span>Cycle 6</span><strong>$5,000,000</strong><p>Major treasury pressure.</p></div>
-    <div class="card"><span>Cycle 7</span><strong>$10,000,000</strong><p>Large-scale system level.</p></div>
-    <div class="card"><span>Cycle 8</span><strong>$25,000,000</strong><p>Network expansion cycle.</p></div>
-
-    <div class="card"><span>Cycle 9</span><strong>$50,000,000</strong><p>High-pressure stage.</p></div>
-    <div class="card"><span>Cycle 10</span><strong>$100,000,000</strong><p>Hundred-million cycle.</p></div>
-    <div class="card"><span>Cycle 11</span><strong>$250,000,000</strong><p>Institutional-scale pressure.</p></div>
-    <div class="card"><span>Cycle 12</span><strong>$500,000,000</strong><p>Half-billion cycle.</p></div>
-
-    <div class="card"><span>Cycle 13</span><strong>$1,000,000,000</strong><p>Billion-dollar cycle.</p></div>
-    <div class="card"><span>Cycle 14</span><strong>$2,500,000,000</strong><p>Multi-billion expansion.</p></div>
-    <div class="card"><span>Cycle 15</span><strong>$5,000,000,000</strong><p>Deep treasury cycle.</p></div>
-    <div class="card"><span>Cycle 16</span><strong>$10,000,000,000</strong><p>Ten-billion cycle.</p></div>
-
-    <div class="card"><span>Cycle 17</span><strong>$25,000,000,000</strong><p>Twenty-five-billion threshold.</p></div>
-    <div class="card"><span>Cycle 18</span><strong>$50,000,000,000</strong><p>Fifty-billion threshold.</p></div>
-    <div class="card"><span>Cycle 19</span><strong>$100,000,000,000</strong><p>Hundred-billion threshold.</p></div>
-    <div class="card"><span>Cycle 20</span><strong>$250,000,000,000</strong><p>Quarter-trillion threshold.</p></div>
-
-    <div class="card"><span>Cycle 21</span><strong>$500,000,000,000</strong><p>Half-trillion threshold.</p></div>
-    <div class="card"><span>Cycle 22</span><strong>$1,000,000,000,000</strong><p>First trillion cycle.</p></div>
-    <div class="card"><span>Cycle 23</span><strong>$2,500,000,000,000</strong><p>Multi-trillion cycle.</p></div>
-    <div class="card"><span>Cycle 24</span><strong>$5,000,000,000,000</strong><p>Five-trillion threshold.</p></div>
-
-    <div class="card"><span>Cycle 25</span><strong>$10,000,000,000,000</strong><p>Ten-trillion threshold.</p></div>
-    <div class="card"><span>Cycle 26</span><strong>$25,000,000,000,000</strong><p>Twenty-five-trillion threshold.</p></div>
-    <div class="card"><span>Cycle 27</span><strong>$50,000,000,000,000</strong><p>Fifty-trillion threshold.</p></div>
-    <div class="card"><span>Cycle 28+</span><strong>∞</strong><p>Thresholds continue upward by rule forever.</p></div>
-  </div>
+  <div id="roadmapGrid" class="roadmap"></div>
 
   <div class="panel">
-    <h3>Distribution Cycle Rule</h3>
+    <h3>Infinite Continuation Rule</h3>
     <p>
-      A milestone is a pressure threshold, not a guaranteed payout. The final deployed contract must define exactly what portion routes to treasury, growth, reserve, operations, volcano pressure, and any future eruption pool. The public rule is simple: pressure builds, threshold is reached, eruption cycle becomes eligible, then the next milestone rises.
+      After the displayed cycles, the system keeps expanding by rule. Each next milestone rises, distribution is calculated, reserve is retained, and the next cycle becomes active.
     </p>
   </div>
 </section>
@@ -407,21 +362,22 @@ label{color:#ccc;font-weight:700}
 <section id="visual">
   <h2>Visual Example — How The Volcano Works</h2>
 
-  <img class="visual-img" src="volcano-visual.jpeg" alt="Near Intersect Volcano visual explanation with USDC, USDT, treasury, growth, exit pool, volcano pressure, claim, and base pool." />
+  <img class="visual-img" src="volcano-visual.jpeg" alt="Near Intersect Volcano visual explanation" />
 
   <div class="panel">
     <h3>Visual Breakdown</h3>
     <p>
-      This image represents the system idea: USDC and USDT enter through the top layer, the flow engine routes value through treasury, growth, exit pool, and volcano pressure, then the base pool represents the long-cycle reserve area where future withdrawal and eruption logic can be displayed.
+      This image represents the system concept: USDC and USDT enter through the top layer, routing moves through treasury, growth, exit pool, volcano pressure, claim logic, and the base pool.
     </p>
     <p>
-      The image is an explainer, not a live contract reading. The final website should update the fee label and routing labels to match the deployed contract before full launch.
+      The image is an explainer, not a live contract reading. The final website must match the deployed contract before full launch.
     </p>
   </div>
 </section>
 
 <section>
   <h2>Flow Engine — Development Model</h2>
+
   <div class="grid">
     <div class="card"><span>Flow Fee</span><strong>5%</strong><p>Current design model for in/out protocol flow.</p></div>
     <div class="card"><span>Lock Design</span><strong>2 Years</strong><p>Long-cycle discipline layer.</p></div>
@@ -431,7 +387,7 @@ label{color:#ccc;font-weight:700}
   <div class="panel">
     <h3>Routing Concept</h3>
     <p>
-      Treasury, Growth, Volcano Pressure, Permanent Reserve, and Core Operations are separated so visitors understand the system is not random. The final production contract must match the final public model before launch.
+      Treasury, Growth, Volcano Pressure, Permanent Reserve, and Core Operations are separated so visitors understand the system is structured. The final production contract must match the final public model before launch.
     </p>
   </div>
 </section>
@@ -476,11 +432,198 @@ label{color:#ccc;font-weight:700}
 </main>
 
 <footer class="footer">
-  Near Intersect Volcano — Development Build • Profile → Token/Pie → OIM → Volcano → Eruption Roadmap
+  Near Intersect Volcano — Development Build • Profile → Token/Pie → OIM → Pressure → Automatic Eruption
 </footer>
 
 <script>
 const STARTING_VIEW_COUNT = "0000000000006846";
+const ERUPTION_DURATION_SECONDS = 429;
+
+let currentCycleIndex = 0;
+let currentPressure = 0;
+let eruptionActive = false;
+
+const eruptionAudio = document.getElementById("eruptionAudio");
+
+const baseCycles = [
+  { milestone: 100000, distribute: 75000, reserve: 25000 },
+  { milestone: 250000, distribute: 150000, reserve: 100000 },
+  { milestone: 500000, distribute: 300000, reserve: 200000 },
+  { milestone: 1000000, distribute: 600000, reserve: 400000 },
+  { milestone: 2500000, distribute: 1500000, reserve: 1000000 },
+  { milestone: 5000000, distribute: 3000000, reserve: 2000000 },
+  { milestone: 10000000, distribute: 6000000, reserve: 4000000 },
+  { milestone: 25000000, distribute: 15000000, reserve: 10000000 },
+  { milestone: 50000000, distribute: 30000000, reserve: 20000000 },
+  { milestone: 100000000, distribute: 60000000, reserve: 40000000 },
+  { milestone: 250000000, distribute: 150000000, reserve: 100000000 },
+  { milestone: 500000000, distribute: 300000000, reserve: 200000000 },
+  { milestone: 1000000000, distribute: 600000000, reserve: 400000000 },
+  { milestone: 2500000000, distribute: 1500000000, reserve: 1000000000 },
+  { milestone: 5000000000, distribute: 3000000000, reserve: 2000000000 },
+  { milestone: 10000000000, distribute: 6000000000, reserve: 4000000000 },
+  { milestone: 25000000000, distribute: 15000000000, reserve: 10000000000 },
+  { milestone: 50000000000, distribute: 30000000000, reserve: 20000000000 },
+  { milestone: 100000000000, distribute: 60000000000, reserve: 40000000000 },
+  { milestone: 250000000000, distribute: 150000000000, reserve: 100000000000 },
+  { milestone: 500000000000, distribute: 300000000000, reserve: 200000000000 },
+  { milestone: 1000000000000, distribute: 600000000000, reserve: 400000000000 },
+  { milestone: 2500000000000, distribute: 1500000000000, reserve: 1000000000000 },
+  { milestone: 5000000000000, distribute: 3000000000000, reserve: 2000000000000 },
+  { milestone: 10000000000000, distribute: 6000000000000, reserve: 4000000000000 }
+];
+
+const eruptionPhases = [
+  { start: 0, label: "Ignition" },
+  { start: 45, label: "Low Pressure Build" },
+  { start: 90, label: "Flow Engine Active" },
+  { start: 150, label: "Treasury Accumulation" },
+  { start: 210, label: "Pressure Warning Phase" },
+  { start: 270, label: "Countdown Phase" },
+  { start: 330, label: "ERUPTION RELEASE" },
+  { start: 380, label: "Distribution Effect" },
+  { start: 410, label: "Reset + Next Threshold Lock" }
+];
+
+function money(value){
+  return "$" + Math.round(value).toLocaleString();
+}
+
+function getCycle(index){
+  if(index < baseCycles.length){
+    return baseCycles[index];
+  }
+
+  let last = baseCycles[baseCycles.length - 1];
+  let extraSteps = index - baseCycles.length + 1;
+  let milestone = last.milestone;
+
+  for(let i = 0; i < extraSteps; i++){
+    milestone = milestone * 2.5;
+  }
+
+  return {
+    milestone,
+    distribute: milestone * 0.60,
+    reserve: milestone * 0.40
+  };
+}
+
+function renderRoadmap(){
+  const grid = document.getElementById("roadmapGrid");
+  grid.innerHTML = "";
+
+  for(let i = 0; i < baseCycles.length; i++){
+    const c = baseCycles[i];
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `
+      <span>Cycle ${i + 1}</span>
+      <strong>${money(c.milestone)}</strong>
+      <p class="dist">Distributed: ${money(c.distribute)}</p>
+      <p class="res">Reserved: ${money(c.reserve)}</p>
+    `;
+    grid.appendChild(div);
+  }
+
+  const infinity = document.createElement("div");
+  infinity.className = "card";
+  infinity.innerHTML = `
+    <span>Cycle 26+</span>
+    <strong>∞</strong>
+    <p class="dist">Standard: 60% distributed</p>
+    <p class="res">Standard: 40% reserved</p>
+  `;
+  grid.appendChild(infinity);
+}
+
+function updateSystemDisplay(){
+  const cycle = getCycle(currentCycleIndex);
+  const percent = Math.min((currentPressure / cycle.milestone) * 100, 100);
+
+  document.getElementById("activeMilestone").textContent = money(cycle.milestone);
+  document.getElementById("pressureAmount").textContent = money(currentPressure);
+  document.getElementById("pressureFill").style.width = percent + "%";
+  document.getElementById("cycleDistribution").textContent = money(cycle.distribute);
+  document.getElementById("cycleReserve").textContent = money(cycle.reserve);
+}
+
+function simulatePressureUntilLiveContract(){
+  if(eruptionActive) return;
+
+  const cycle = getCycle(currentCycleIndex);
+
+  /*
+    DEVELOPMENT SIMULATION ONLY:
+    Replace this later with live contract treasury/pressure reads.
+  */
+  currentPressure += cycle.milestone * 0.015;
+
+  updateSystemDisplay();
+
+  if(currentPressure >= cycle.milestone){
+    triggerAutomaticEruption();
+  }
+}
+
+function triggerAutomaticEruption(){
+  if(eruptionActive) return;
+
+  eruptionActive = true;
+  document.getElementById("systemStatus").textContent = "ERUPTION IN PROGRESS";
+  document.getElementById("systemPanel").classList.add("eruption-active");
+
+  eruptionAudio.currentTime = 0;
+
+  const playPromise = eruptionAudio.play();
+  if(playPromise !== undefined){
+    playPromise.catch(function(){
+      document.getElementById("eruptionPhase").textContent =
+        "Milestone reached — audio waiting for browser permission";
+    });
+  }
+
+  const phaseTimer = setInterval(function(){
+    let t = eruptionAudio.currentTime || 0;
+    let current = eruptionPhases[0];
+
+    for(let i = 0; i < eruptionPhases.length; i++){
+      if(t >= eruptionPhases[i].start){
+        current = eruptionPhases[i];
+      }
+    }
+
+    document.getElementById("eruptionPhase").textContent = current.label;
+
+    if(t >= ERUPTION_DURATION_SECONDS || eruptionAudio.ended){
+      clearInterval(phaseTimer);
+      completeEruptionCycle();
+    }
+  }, 250);
+
+  setTimeout(function(){
+    if(eruptionActive){
+      clearInterval(phaseTimer);
+      completeEruptionCycle();
+    }
+  }, ERUPTION_DURATION_SECONDS * 1000);
+}
+
+function completeEruptionCycle(){
+  const completed = getCycle(currentCycleIndex);
+
+  currentCycleIndex++;
+  currentPressure = 0;
+  eruptionActive = false;
+
+  document.getElementById("systemStatus").textContent = "BUILDING PRESSURE";
+  document.getElementById("eruptionPhase").textContent =
+    "Previous cycle completed: " + money(completed.distribute) +
+    " distributed / " + money(completed.reserve) + " reserved";
+
+  document.getElementById("systemPanel").classList.remove("eruption-active");
+  updateSystemDisplay();
+}
 
 function createProfile(){
   const name = document.getElementById("profileName").value.trim();
@@ -533,7 +676,17 @@ function loadProfile(){
 }
 
 document.getElementById("viewCount").textContent = STARTING_VIEW_COUNT;
+
+renderRoadmap();
 loadProfile();
+updateSystemDisplay();
+
+/*
+  Automatic pressure monitor.
+  This is currently simulated until live treasury/contract pressure is connected.
+  No user button triggers eruption.
+*/
+setInterval(simulatePressureUntilLiveContract, 2500);
 </script>
 
 </body>
