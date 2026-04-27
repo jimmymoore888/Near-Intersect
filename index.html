@@ -1,21 +1,3 @@
-<div style="margin-top:20px;">
-  <p style="color:#aaa;font-size:14px;">
-    Built on NEAR Protocol — Connect your wallet to enter the system
-  </p>
-
-  <button style="
-    margin-top:12px;
-    padding:12px 20px;
-    background:#d6a84f;
-    color:#000;
-    border:none;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
-  ">
-    Connect NEAR Wallet
-  </button>
-</div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +14,7 @@
   --cyan:#00ffd5;
   --orange:#ff9f1c;
   --red:#ff3b1f;
+  --gold:#d6a84f;
   --text:#f4f4f4;
   --muted:#aaa;
   --green:#39ff88;
@@ -60,6 +43,9 @@ a{color:inherit;text-decoration:none}
   margin:18px 0;
 }
 .notice{border-left:5px solid var(--orange);background:#120d05}
+.oim-notice{border-left:5px solid var(--cyan);background:#061514}
+.near-notice{border-left:5px solid var(--gold);background:#151006}
+.danger-notice{border-left:5px solid var(--red);background:#160604}
 .topbar{
   position:sticky;top:0;z-index:20;
   background:rgba(0,0,0,.88);
@@ -102,10 +88,16 @@ a{color:inherit;text-decoration:none}
 .btn.secondary{
   background:#111;color:var(--cyan);border:1px solid var(--cyan);
 }
+.btn.gold{
+  background:var(--gold);color:#000;
+}
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:16px;
+}
+.grid.two{
+  grid-template-columns:repeat(2,1fr);
 }
 .roadmap{
   display:grid;
@@ -173,10 +165,7 @@ label{color:#ccc;font-weight:700}
   from{box-shadow:0 0 0 rgba(255,80,0,0)}
   to{box-shadow:0 0 45px rgba(255,80,0,.75)}
 }
-.audio-note{
-  color:#aaa;
-  font-size:14px;
-}
+.audio-note{color:#aaa;font-size:14px}
 .chat-box{
   min-height:210px;
   border:1px dashed #444;
@@ -191,14 +180,14 @@ label{color:#ccc;font-weight:700}
 }
 .footer{
   border-top:1px solid var(--line);
-  padding:28px 0;
+  padding:28px 18px;
   color:#888;
   text-align:center;
 }
 @media(max-width:850px){
   .hero{grid-template-columns:1fr}
   h1{font-size:38px}
-  .grid,.form-grid,.roadmap{grid-template-columns:1fr}
+  .grid,.grid.two,.form-grid,.roadmap{grid-template-columns:1fr}
   .nav{align-items:flex-start;flex-direction:column}
 }
 </style>
@@ -211,13 +200,15 @@ label{color:#ccc;font-weight:700}
 <header class="topbar">
   <div class="nav">
     <div class="brand">NEAR INTERSECT VOLCANO</div>
-    <div class="counter">PUBLIC VIEW COUNT: <span id="viewCount">0000000000006846</span></div>
+    <div class="counter">PUBLIC VIEW COUNT: <span id="viewCount">0000000000008459</span></div>
     <div class="navlinks">
       <a href="#start">Start</a>
+      <a href="#near">NEAR</a>
+      <a href="#oim">OIM</a>
       <a href="#profile">Profile</a>
       <a href="#treasury">Treasury</a>
       <a href="#roadmap">Eruptions</a>
-      <a href="#visual">Visual</a>
+      <a href="#deadline">2027 Target</a>
       <a href="#chat">Chat</a>
     </div>
   </div>
@@ -232,11 +223,15 @@ label{color:#ccc;font-weight:700}
     <p>
       Near Intersect Volcano is being built as a deterministic pressure system where a participant profile becomes the foundation for a future token/pie with permanent OIM protection.
     </p>
+    <p>
+      Built on NEAR Protocol, the system is designed for wallet-based access, smart contract enforcement, public verification, controlled release, and milestone-based eruption events.
+    </p>
     <p class="small">
-      This page is informational and developmental. Full on-chain interaction, wallet execution, token creation, treasury balances, and distribution claims activate only when the production launch is complete.
+      Full system completion is targeted for the Q3–Q4 2027 development window, subject to smart contract deployment, security review, wallet integration, testing, and final on-chain verification.
     </p>
     <div class="cta-row">
       <a class="btn" href="#profile">Create Profile</a>
+      <a class="btn secondary" href="#oim">Understand OIM</a>
       <a class="btn secondary" href="#roadmap">View Eruption Law</a>
     </div>
   </div>
@@ -245,8 +240,9 @@ label{color:#ccc;font-weight:700}
     <h3>System Status</h3>
     <div class="grid" style="grid-template-columns:1fr">
       <div class="card"><span>Factory Status</span><strong>DEVELOPMENT</strong></div>
-      <div class="card"><span>Law Layer</span><strong>ENFORCED DESIGN</strong></div>
+      <div class="card"><span>Blockchain Layer</span><strong>NEAR PROTOCOL</strong></div>
       <div class="card"><span>OIM</span><strong>PERMANENT</strong></div>
+      <div class="card"><span>Target Completion</span><strong>Q3–Q4 2027</strong></div>
     </div>
   </div>
 </section>
@@ -256,456 +252,127 @@ label{color:#ccc;font-weight:700}
   <div class="panel notice">
     <h3>This is the corrected entry point.</h3>
     <p>
-      The only user-click action is profile creation. Eruptions are not user-triggered. They happen automatically only when system pressure reaches the active milestone.
+      The only user-click action during this development stage is profile creation. Eruptions are not user-triggered. They happen automatically only when system pressure reaches the active milestone.
     </p>
   </div>
 
   <div class="grid">
     <div class="card"><span>Step 1</span><strong>Create Profile</strong><p>Build your early participant record.</p></div>
-    <div class="card"><span>Step 2</span><strong>Connect Wallet</strong><p>Coming later through NEAR wallet integration.</p></div>
+    <div class="card"><span>Step 2</span><strong>Connect NEAR Wallet</strong><p>Wallet-based access comes through NEAR wallet integration.</p></div>
     <div class="card"><span>Step 3</span><strong>Token/Pie Birth</strong><p>Profile becomes future token foundation with permanent OIM.</p></div>
   </div>
 </section>
 
-<section id="profile">
-  <h2>Create Your Volcano Profile</h2>
-  <div class="panel">
+<section id="near">
+  <h2>Built on NEAR Protocol</h2>
+  <div class="panel near-notice">
+    <h3>Why NEAR matters</h3>
     <p>
-      This profile is stored locally in this browser for development. Later, production can bind it to a NEAR wallet, token ID, pie ID, OIM module, treasury view, and eruption eligibility status.
+      Near Intersect Volcano is designed around NEAR Protocol because the system needs fast transactions, low fees, wallet access, and smart contract execution that can publicly enforce rules instead of relying on hidden manual control.
     </p>
-
-    <div class="form-grid">
-      <div>
-        <label>Profile Name</label>
-        <input id="profileName" placeholder="Example: Jimmy" />
-      </div>
-      <div>
-        <label>NEAR Account / Wallet</label>
-        <input id="nearAccount" placeholder="example.near / optional for now" />
-      </div>
-      <div>
-        <label>Investor Type</label>
-        <select id="investorType">
-          <option>Early Observer</option>
-          <option>Long-Term Builder</option>
-          <option>Stablecoin Participant</option>
-          <option>Developer / Tester</option>
-          <option>Future Token Holder</option>
-        </select>
-      </div>
-      <div>
-        <label>Participation Goal</label>
-        <select id="goal">
-          <option>Learn the system</option>
-          <option>Track treasury growth</option>
-          <option>Join when launched</option>
-          <option>Build with the protocol</option>
-        </select>
-      </div>
-    </div>
-
-    <label>Profile Notes</label>
-    <textarea id="notes" rows="4" placeholder="What do you want your profile to represent inside the Volcano system?"></textarea>
-
-    <button class="btn" onclick="createProfile()">CREATE DEVELOPMENT PROFILE</button>
-
-    <div id="profileOutput" class="panel profile-output">
-      <h3>Profile Created</h3>
-      <p><b>Name:</b> <span id="outName"></span></p>
-      <p><b>Wallet:</b> <span id="outWallet"></span></p>
-      <p><b>Investor Type:</b> <span id="outType"></span></p>
-      <p><b>Goal:</b> <span id="outGoal"></span></p>
-      <p><b>Future Role:</b> Profile → Token/Pie → Permanent OIM → Volcano participation layer.</p>
-      <p><span class="status-pill">LOCAL DEVELOPMENT RECORD CREATED</span></p>
-    </div>
   </div>
-</section>
-
-<section id="treasury">
-  <h2>Treasury + Pressure Monitor</h2>
 
   <div class="grid">
     <div class="card">
-      <span>Volcano Treasury</span>
-      <strong id="treasuryAmount">$0.00</strong>
-      <p>Placeholder until live treasury data is connected.</p>
+      <span>Access Layer</span>
+      <strong>NEAR Wallet</strong>
+      <p>Users connect through a NEAR wallet before future on-chain actions become available.</p>
     </div>
     <div class="card">
-      <span>Your Account Amount</span>
-      <strong id="userAmount">$0.00</strong>
-      <p>Future user balance and claim preview will appear here.</p>
+      <span>Execution Layer</span>
+      <strong>Smart Contracts</strong>
+      <p>Fee routing, OIM logic, pressure accumulation, milestone checks, and controlled release should be enforced by contract logic.</p>
     </div>
     <div class="card">
-      <span>Active Milestone</span>
-      <strong id="activeMilestone">$100,000</strong>
-      <p>Pressure must reach this level before eruption activates.</p>
+      <span>Trust Layer</span>
+      <strong>Public Verification</strong>
+      <p>When deployed, contract activity can be reviewed on-chain instead of hidden inside a private database.</p>
     </div>
   </div>
 
-  <div id="systemPanel" class="panel">
-    <h3>Automatic Eruption State</h3>
-    <p>Status: <strong id="systemStatus">BUILDING PRESSURE</strong></p>
-    <p>Current Pressure: <strong id="pressureAmount">$0</strong></p>
-    <div class="meter"><div id="pressureFill" class="meter-fill"></div></div>
-    <p>Current Cycle Distribution: <strong id="cycleDistribution">$75,000</strong></p>
-    <p>Current Cycle Reserve: <strong id="cycleReserve">$25,000</strong></p>
-    <p>7:09 Phase: <strong id="eruptionPhase">Waiting for milestone</strong></p>
-    <p class="audio-note">
-      The eruption song is connected as <b>eruption-theme.mp3</b>. Some browsers may block audio until the visitor has interacted with the page, but the system law remains automatic.
-    </p>
-  </div>
-</section>
-
-<section id="roadmap">
-  <h2>Eruption Milestone Payout Distribution Cycles</h2>
-
-  <div class="panel notice">
-    <h3>Locked Rule</h3>
-    <p>
-      Genesis Eruption: $100,000 reached → $75,000 distributed → $25,000 reserved.
-      Standard Eruptions after that use 60% distribution and 40% reserve, continuing into the trillions and then to infinity.
-    </p>
-  </div>
-
-  <div id="roadmapGrid" class="roadmap"></div>
-
   <div class="panel">
-    <h3>Infinite Continuation Rule</h3>
     <p>
-      After the displayed cycles, the system keeps expanding by rule. Each next milestone rises, distribution is calculated, reserve is retained, and the next cycle becomes active.
+      Current wallet and treasury areas on this page are developmental placeholders until the production NEAR contract is deployed, connected, tested, and verified.
     </p>
   </div>
 </section>
 
-<section id="visual">
-  <h2>Visual Example — How The Volcano Works</h2>
+<section id="oim">
+  <h2>OIM — Outpace Inflation Module</h2>
 
-  <img class="visual-img" src="volcano-visual.jpeg" alt="Near Intersect Volcano visual explanation" />
-
-  <div class="panel">
-    <h3>Visual Breakdown</h3>
+  <div class="panel oim-notice">
+    <h3>Plain-English Definition</h3>
     <p>
-      This image represents the system concept: USDC and USDT enter through the top layer, routing moves through treasury, growth, exit pool, volcano pressure, claim logic, and the base pool.
+      OIM is the anti-dilution engine. It controls when and how value becomes available so usable supply does not grow faster than real participation, treasury strength, and system activity.
     </p>
     <p>
-      The image is an explainer, not a live contract reading. The final website must match the deployed contract before full launch.
+      Most systems print, release, and dilute. OIM restricts, delays, builds pressure, and releases deliberately.
     </p>
   </div>
-</section>
-
-<section>
-  <h2>Flow Engine — Development Model</h2>
 
   <div class="grid">
-    <div class="card"><span>Flow Fee</span><strong>5%</strong><p>Current design model for in/out protocol flow.</p></div>
-    <div class="card"><span>Lock Design</span><strong>2 Years</strong><p>Long-cycle discipline layer.</p></div>
-    <div class="card"><span>Exit Window</span><strong>7 Days</strong><p>Future controlled exit window design.</p></div>
+    <div class="card">
+      <span>OIM Function 1</span>
+      <strong>Supply Control</strong>
+      <p>OIM limits how much value can become freely available at once. This reduces uncontrolled release and dilution pressure.</p>
+    </div>
+
+    <div class="card">
+      <span>OIM Function 2</span>
+      <strong>Time Discipline</strong>
+      <p>OIM uses long-cycle thinking, lock logic, and controlled windows so the system rewards patience instead of panic exits.</p>
+    </div>
+
+    <div class="card">
+      <span>OIM Function 3</span>
+      <strong>Pressure First</strong>
+      <p>Activity builds pressure before release. Value is not constantly emitted. It waits for defined system milestones.</p>
+    </div>
+
+    <div class="card">
+      <span>OIM Function 4</span>
+      <strong>Controlled Release</strong>
+      <p>When milestones are reached, the system releases by rule and keeps reserves inside the system for the next cycle.</p>
+    </div>
+
+    <div class="card">
+      <span>OIM Function 5</span>
+      <strong>Anti-Dilution Law</strong>
+      <p>The goal is to keep usable supply growth slower than system participation and treasury accumulation.</p>
+    </div>
+
+    <div class="card">
+      <span>OIM Function 6</span>
+      <strong>Treasury Discipline</strong>
+      <p>OIM applies at the system level too. Treasury routing must remain disciplined and match the deployed contract.</p>
+    </div>
   </div>
 
-  <div class="panel">
-    <h3>Routing Concept</h3>
+  <div class="grid two">
+    <div class="card">
+      <h3>What Inflationary Systems Do</h3>
+      <ul>
+        <li>Constant emissions</li>
+        <li>Instant liquidity</li>
+        <li>Fast exits</li>
+        <li>Supply grows faster than demand</li>
+        <li>Late users absorb dilution</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>What OIM Does</h3>
+      <ul>
+        <li>Restricts supply release</li>
+        <li>Builds pressure before release</li>
+        <li>Uses milestone-based eruption cycles</li>
+        <li>Reduces dilution risk</li>
+        <li>Aligns release with real participation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel danger-notice">
+    <h3>Important OIM Notice</h3>
     <p>
-      Treasury, Growth, Volcano Pressure, Permanent Reserve, and Core Operations are separated so visitors understand the system is structured. The final production contract must match the final public model before launch.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>Token / Pie Doctrine</h2>
-  <div class="panel">
-    <p>
-      Each future participant token is treated as a Pie. Every Pie carries permanent OIM as its anchor module. The profile created today is the front-facing identity layer that can later become the foundation for the token/pie record.
-    </p>
-    <ul>
-      <li>Profile first.</li>
-      <li>Wallet second.</li>
-      <li>Token/Pie birth third.</li>
-      <li>OIM permanently attached.</li>
-      <li>Volcano pressure and eruption view activated after full launch.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="chat">
-  <h2>Global Chat — Future Entry Space</h2>
-  <div class="chat-box">
-    <div class="chat-message"><b>System:</b> Global participant chat is reserved for a later development phase.</div>
-    <div class="chat-message"><b>System:</b> This area will eventually allow active participants to communicate during treasury pressure cycles and eruption windows.</div>
-    <div class="chat-message"><b>Status:</b> Placeholder only. No live chat is active yet.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Important Development Notice</h2>
-  <div class="panel notice">
-    <p>
-      Near Intersect Volcano is still undergoing development before full public launch. Current profile creation is a local browser-based participation preview. It does not create an on-chain token, does not connect to a live treasury, does not guarantee returns, and does not activate claims.
-    </p>
-    <p>
-      The purpose of this page is to let users understand the system, create an early profile, view the Volcano model, follow the eruption milestone roadmap, and watch the build become real over time.
-    </p>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  Near Intersect Volcano — Development Build • Profile → Token/Pie → OIM → Pressure → Automatic Eruption
-</footer>
-
-<script>
-const STARTING_VIEW_COUNT = "0000000000006846";
-const ERUPTION_DURATION_SECONDS = 429;
-
-let currentCycleIndex = 0;
-let currentPressure = 0;
-let eruptionActive = false;
-
-const eruptionAudio = document.getElementById("eruptionAudio");
-
-const baseCycles = [
-  { milestone: 100000, distribute: 75000, reserve: 25000 },
-  { milestone: 250000, distribute: 150000, reserve: 100000 },
-  { milestone: 500000, distribute: 300000, reserve: 200000 },
-  { milestone: 1000000, distribute: 600000, reserve: 400000 },
-  { milestone: 2500000, distribute: 1500000, reserve: 1000000 },
-  { milestone: 5000000, distribute: 3000000, reserve: 2000000 },
-  { milestone: 10000000, distribute: 6000000, reserve: 4000000 },
-  { milestone: 25000000, distribute: 15000000, reserve: 10000000 },
-  { milestone: 50000000, distribute: 30000000, reserve: 20000000 },
-  { milestone: 100000000, distribute: 60000000, reserve: 40000000 },
-  { milestone: 250000000, distribute: 150000000, reserve: 100000000 },
-  { milestone: 500000000, distribute: 300000000, reserve: 200000000 },
-  { milestone: 1000000000, distribute: 600000000, reserve: 400000000 },
-  { milestone: 2500000000, distribute: 1500000000, reserve: 1000000000 },
-  { milestone: 5000000000, distribute: 3000000000, reserve: 2000000000 },
-  { milestone: 10000000000, distribute: 6000000000, reserve: 4000000000 },
-  { milestone: 25000000000, distribute: 15000000000, reserve: 10000000000 },
-  { milestone: 50000000000, distribute: 30000000000, reserve: 20000000000 },
-  { milestone: 100000000000, distribute: 60000000000, reserve: 40000000000 },
-  { milestone: 250000000000, distribute: 150000000000, reserve: 100000000000 },
-  { milestone: 500000000000, distribute: 300000000000, reserve: 200000000000 },
-  { milestone: 1000000000000, distribute: 600000000000, reserve: 400000000000 },
-  { milestone: 2500000000000, distribute: 1500000000000, reserve: 1000000000000 },
-  { milestone: 5000000000000, distribute: 3000000000000, reserve: 2000000000000 },
-  { milestone: 10000000000000, distribute: 6000000000000, reserve: 4000000000000 }
-];
-
-const eruptionPhases = [
-  { start: 0, label: "Ignition" },
-  { start: 45, label: "Low Pressure Build" },
-  { start: 90, label: "Flow Engine Active" },
-  { start: 150, label: "Treasury Accumulation" },
-  { start: 210, label: "Pressure Warning Phase" },
-  { start: 270, label: "Countdown Phase" },
-  { start: 330, label: "ERUPTION RELEASE" },
-  { start: 380, label: "Distribution Effect" },
-  { start: 410, label: "Reset + Next Threshold Lock" }
-];
-
-function money(value){
-  return "$" + Math.round(value).toLocaleString();
-}
-
-function getCycle(index){
-  if(index < baseCycles.length){
-    return baseCycles[index];
-  }
-
-  let last = baseCycles[baseCycles.length - 1];
-  let extraSteps = index - baseCycles.length + 1;
-  let milestone = last.milestone;
-
-  for(let i = 0; i < extraSteps; i++){
-    milestone = milestone * 2.5;
-  }
-
-  return {
-    milestone,
-    distribute: milestone * 0.60,
-    reserve: milestone * 0.40
-  };
-}
-
-function renderRoadmap(){
-  const grid = document.getElementById("roadmapGrid");
-  grid.innerHTML = "";
-
-  for(let i = 0; i < baseCycles.length; i++){
-    const c = baseCycles[i];
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
-      <span>Cycle ${i + 1}</span>
-      <strong>${money(c.milestone)}</strong>
-      <p class="dist">Distributed: ${money(c.distribute)}</p>
-      <p class="res">Reserved: ${money(c.reserve)}</p>
-    `;
-    grid.appendChild(div);
-  }
-
-  const infinity = document.createElement("div");
-  infinity.className = "card";
-  infinity.innerHTML = `
-    <span>Cycle 26+</span>
-    <strong>∞</strong>
-    <p class="dist">Standard: 60% distributed</p>
-    <p class="res">Standard: 40% reserved</p>
-  `;
-  grid.appendChild(infinity);
-}
-
-function updateSystemDisplay(){
-  const cycle = getCycle(currentCycleIndex);
-  const percent = Math.min((currentPressure / cycle.milestone) * 100, 100);
-
-  document.getElementById("activeMilestone").textContent = money(cycle.milestone);
-  document.getElementById("pressureAmount").textContent = money(currentPressure);
-  document.getElementById("pressureFill").style.width = percent + "%";
-  document.getElementById("cycleDistribution").textContent = money(cycle.distribute);
-  document.getElementById("cycleReserve").textContent = money(cycle.reserve);
-}
-
-function simulatePressureUntilLiveContract(){
-  if(eruptionActive) return;
-
-  const cycle = getCycle(currentCycleIndex);
-
-  /*
-    DEVELOPMENT SIMULATION ONLY:
-    Replace this later with live contract treasury/pressure reads.
-  */
-  currentPressure += cycle.milestone * 0.015;
-
-  updateSystemDisplay();
-
-  if(currentPressure >= cycle.milestone){
-    triggerAutomaticEruption();
-  }
-}
-
-function triggerAutomaticEruption(){
-  if(eruptionActive) return;
-
-  eruptionActive = true;
-  document.getElementById("systemStatus").textContent = "ERUPTION IN PROGRESS";
-  document.getElementById("systemPanel").classList.add("eruption-active");
-
-  eruptionAudio.currentTime = 0;
-
-  const playPromise = eruptionAudio.play();
-  if(playPromise !== undefined){
-    playPromise.catch(function(){
-      document.getElementById("eruptionPhase").textContent =
-        "Milestone reached — audio waiting for browser permission";
-    });
-  }
-
-  const phaseTimer = setInterval(function(){
-    let t = eruptionAudio.currentTime || 0;
-    let current = eruptionPhases[0];
-
-    for(let i = 0; i < eruptionPhases.length; i++){
-      if(t >= eruptionPhases[i].start){
-        current = eruptionPhases[i];
-      }
-    }
-
-    document.getElementById("eruptionPhase").textContent = current.label;
-
-    if(t >= ERUPTION_DURATION_SECONDS || eruptionAudio.ended){
-      clearInterval(phaseTimer);
-      completeEruptionCycle();
-    }
-  }, 250);
-
-  setTimeout(function(){
-    if(eruptionActive){
-      clearInterval(phaseTimer);
-      completeEruptionCycle();
-    }
-  }, ERUPTION_DURATION_SECONDS * 1000);
-}
-
-function completeEruptionCycle(){
-  const completed = getCycle(currentCycleIndex);
-
-  currentCycleIndex++;
-  currentPressure = 0;
-  eruptionActive = false;
-
-  document.getElementById("systemStatus").textContent = "BUILDING PRESSURE";
-  document.getElementById("eruptionPhase").textContent =
-    "Previous cycle completed: " + money(completed.distribute) +
-    " distributed / " + money(completed.reserve) + " reserved";
-
-  document.getElementById("systemPanel").classList.remove("eruption-active");
-  updateSystemDisplay();
-}
-
-function createProfile(){
-  const name = document.getElementById("profileName").value.trim();
-  const wallet = document.getElementById("nearAccount").value.trim();
-  const type = document.getElementById("investorType").value;
-  const goal = document.getElementById("goal").value;
-  const notes = document.getElementById("notes").value.trim();
-
-  if(!name){
-    alert("Enter a profile name first.");
-    return;
-  }
-
-  const profile = {
-    profileName:name,
-    nearAccount: wallet || "Not connected yet",
-    investorType:type,
-    goal:goal,
-    notes:notes,
-    createdAt:new Date().toISOString(),
-    status:"Development profile only",
-    futureRole:"Profile becomes token/pie foundation with permanent OIM"
-  };
-
-  localStorage.setItem("nearIntersectVolcanoProfile", JSON.stringify(profile));
-
-  document.getElementById("outName").textContent = profile.profileName;
-  document.getElementById("outWallet").textContent = profile.nearAccount;
-  document.getElementById("outType").textContent = profile.investorType;
-  document.getElementById("outGoal").textContent = profile.goal;
-  document.getElementById("profileOutput").classList.add("active");
-}
-
-function loadProfile(){
-  const saved = localStorage.getItem("nearIntersectVolcanoProfile");
-  if(!saved) return;
-
-  const profile = JSON.parse(saved);
-  document.getElementById("profileName").value = profile.profileName || "";
-  document.getElementById("nearAccount").value = profile.nearAccount === "Not connected yet" ? "" : profile.nearAccount;
-  document.getElementById("investorType").value = profile.investorType || "Early Observer";
-  document.getElementById("goal").value = profile.goal || "Learn the system";
-  document.getElementById("notes").value = profile.notes || "";
-
-  document.getElementById("outName").textContent = profile.profileName || "";
-  document.getElementById("outWallet").textContent = profile.nearAccount || "Not connected yet";
-  document.getElementById("outType").textContent = profile.investorType || "";
-  document.getElementById("outGoal").textContent = profile.goal || "";
-  document.getElementById("profileOutput").classList.add("active");
-}
-
-document.getElementById("viewCount").textContent = STARTING_VIEW_COUNT;
-
-renderRoadmap();
-loadProfile();
-updateSystemDisplay();
-
-/*
-  Automatic pressure monitor.
-  This is currently simulated until live treasury/contract pressure is connected.
-  No user button triggers eruption.
-*/
-setInterval(simulatePressureUntilLiveContract, 2500);
-</script>
-
-</body>
-</html>
+      OIM
