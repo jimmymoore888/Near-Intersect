@@ -29,350 +29,475 @@ body{
 }
 main{max-width:1180px;margin:auto;padding:28px 18px}
 section{margin:54px 0}
-h1,h2,h3{letter-spacing:.04em}
-h1{font-size:54px;color:var(--cyan);margin:0 0 18px}
-h2{font-size:30px;color:var(--cyan)}
-h3{color:var(--orange)}
-p,li{font-size:18px;line-height:1.55;color:#d5d5d5}
-a{color:inherit;text-decoration:none}
-.panel{
-  border:1px solid var(--line);
-  background:rgba(10,12,12,.88);
-  padding:24px;
-  border-radius:18px;
-  margin:18px 0;
-}
-.notice{border-left:5px solid var(--orange);background:#120d05}
-.oim-notice{border-left:5px solid var(--cyan);background:#061514}
-.near-notice{border-left:5px solid var(--gold);background:#151006}
-.danger-notice{border-left:5px solid var(--red);background:#160604}
-.topbar{
-  position:sticky;top:0;z-index:20;
-  background:rgba(0,0,0,.88);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
-}
-.nav{
-  max-width:1180px;margin:auto;padding:14px 18px;
-  display:flex;justify-content:space-between;align-items:center;gap:14px;
-}
-.brand{font-weight:900;color:var(--cyan)}
-.navlinks{display:flex;gap:10px;flex-wrap:wrap}
-.navlinks a{
-  color:#ddd;font-size:14px;border:1px solid var(--line);
-  padding:8px 10px;border-radius:999px;
-}
-.counter{
-  font-family:monospace;color:var(--green);border:1px solid var(--line);
-  padding:10px 12px;border-radius:12px;background:#050505;font-size:14px;
-}
 .hero{
-  min-height:78vh;
-  display:grid;
-  align-items:center;
-  grid-template-columns:1.1fr .9fr;
-  gap:28px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:34px;
+  background:linear-gradient(135deg,#071111,#0f1614,#050505);
 }
 .badge{
-  display:inline-block;color:#000;background:var(--cyan);
-  padding:8px 12px;border-radius:999px;font-weight:900;margin-bottom:18px;
+  display:inline-block;
+  padding:8px 13px;
+  border:1px solid var(--cyan);
+  border-radius:999px;
+  color:var(--cyan);
+  font-size:13px;
+  margin:5px 5px 5px 0;
 }
-.hero p{font-size:20px}
-.small{font-size:14px;color:#aaa}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
-.btn{
-  border:0;background:var(--cyan);color:#000;
-  padding:16px 18px;border-radius:12px;font-weight:900;
-  cursor:pointer;font-size:16px;display:inline-block;
+h1{font-size:42px;margin:18px 0 10px}
+h2{font-size:30px;margin-bottom:12px;color:var(--cyan)}
+h3{color:var(--gold)}
+p{line-height:1.65;color:#ddd}
+.muted{color:var(--muted)}
+.nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:22px;
 }
-.btn.secondary{
-  background:#111;color:var(--cyan);border:1px solid var(--cyan);
+.nav a,.btn{
+  display:inline-block;
+  padding:13px 18px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  color:var(--text);
+  text-decoration:none;
+  background:#050505;
+  font-size:14px;
+  cursor:pointer;
 }
-.btn.gold{
-  background:var(--gold);color:#000;
+.nav a:hover,.btn:hover{
+  border-color:var(--cyan);
+  color:var(--cyan);
 }
 .grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
   gap:16px;
-}
-.grid.two{
-  grid-template-columns:repeat(2,1fr);
-}
-.roadmap{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
 }
 .card{
+  padding:22px;
   border:1px solid var(--line);
-  background:var(--panel);
-  padding:20px;
-  border-radius:16px;
+  border-radius:18px;
+  background:var(--panel2);
 }
-.card span{display:block;color:var(--muted);font-size:14px;margin-bottom:8px}
-.card strong{font-size:25px;color:var(--cyan)}
-.card .dist{color:var(--green)}
-.card .res{color:var(--orange)}
-input,select,textarea{
-  width:100%;padding:15px;margin:8px 0 14px;
-  background:#050505;border:1px solid #333;color:#fff;
-  border-radius:10px;font-size:16px;
-}
-label{color:#ccc;font-weight:700}
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-}
-.profile-output{
-  display:none;
-  border:1px solid var(--cyan);
-  background:#02120f;
-  margin-top:18px;
-}
-.profile-output.active{display:block}
-.status-pill{
-  display:inline-block;padding:7px 10px;border-radius:999px;
-  background:#08251f;color:var(--green);
-  border:1px solid #145944;font-weight:900;
-}
-.visual-img{
+.card strong{color:var(--cyan)}
+input{
   width:100%;
-  border-radius:22px;
-  border:1px solid var(--line);
-  box-shadow:0 0 35px rgba(0,255,213,.15);
-}
-.meter{
-  width:100%;
-  height:22px;
+  padding:14px;
+  margin:8px 0;
+  border-radius:12px;
   border:1px solid var(--line);
   background:#050505;
-  border-radius:999px;
-  overflow:hidden;
-  margin:12px 0;
+  color:var(--text);
+  font-size:15px;
 }
-.meter-fill{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--cyan),var(--orange),var(--red));
-  transition:width .4s ease;
+button{
+  margin-top:10px;
+  padding:14px 22px;
+  border-radius:28px;
+  border:1px solid var(--cyan);
+  background:#050505;
+  color:var(--cyan);
+  cursor:pointer;
+  font-weight:bold;
 }
-.eruption-active{
-  animation:eruptionPulse 1s infinite alternate;
-}
-@keyframes eruptionPulse{
-  from{box-shadow:0 0 0 rgba(255,80,0,0)}
-  to{box-shadow:0 0 45px rgba(255,80,0,.75)}
-}
-.audio-note{color:#aaa;font-size:14px}
-.chat-box{
-  min-height:210px;
-  border:1px dashed #444;
-  border-radius:16px;
+button:hover{background:#08201d}
+.profile-badge{
+  margin-top:18px;
   padding:18px;
-  background:#070707;
+  border:1px solid var(--cyan);
+  border-radius:16px;
+  background:#071312;
 }
-.chat-message{
-  border-bottom:1px solid #222;
-  padding:10px 0;
-  color:#ccc;
+.status{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+}
+.status span:last-child{color:var(--gold)}
+.flow{
+  font-size:20px;
+  padding:20px;
+  border:1px solid var(--cyan);
+  border-radius:18px;
+  text-align:center;
+  background:#071312;
+}
+.warning{
+  border:1px solid var(--gold);
+  border-radius:18px;
+  padding:20px;
+  background:#161207;
 }
 .footer{
   border-top:1px solid var(--line);
-  padding:28px 18px;
-  color:#888;
-  text-align:center;
-}
-@media(max-width:850px){
-  .hero{grid-template-columns:1fr}
-  h1{font-size:38px}
-  .grid,.grid.two,.form-grid,.roadmap{grid-template-columns:1fr}
-  .nav{align-items:flex-start;flex-direction:column}
+  padding:30px 0;
+  color:var(--muted);
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
-
-<audio id="eruptionAudio" src="eruption-theme.mp3" preload="auto"></audio>
-
-<header class="topbar">
-  <div class="nav">
-    <div class="brand">NEAR INTERSECT VOLCANO</div>
-    <div class="counter">PUBLIC VIEW COUNT: <span id="viewCount">0000000000008459</span></div>
-    <div class="navlinks">
-      <a href="#start">Start</a>
-      <a href="#near">NEAR</a>
-      <a href="#oim">OIM</a>
-      <a href="#profile">Profile</a>
-      <a href="#treasury">Treasury</a>
-      <a href="#roadmap">Eruptions</a>
-      <a href="#deadline">2027 Target</a>
-      <a href="#chat">Chat</a>
-    </div>
-  </div>
-</header>
-
 <main>
 
-<section class="hero">
-  <div>
-    <div class="badge">BETA DEVELOPMENT — PUBLIC BUILD</div>
-    <h1>Stablecoin Pressure Engine. Profile First. Token Later.</h1>
-    <p>
-      Near Intersect Volcano is being built as a deterministic pressure system where a participant profile becomes the foundation for a future token/pie with permanent OIM protection.
-    </p>
-    <p>
-      Built on NEAR Protocol, the system is designed for wallet-based access, smart contract enforcement, public verification, controlled release, and milestone-based eruption events.
-    </p>
-    <p class="small">
-      Full system completion is targeted for the Q3–Q4 2027 development window, subject to smart contract deployment, security review, wallet integration, testing, and final on-chain verification.
-    </p>
-    <div class="cta-row">
-      <a class="btn" href="#profile">Create Profile</a>
-      <a class="btn secondary" href="#oim">Understand OIM</a>
-      <a class="btn secondary" href="#roadmap">View Eruption Law</a>
-    </div>
-  </div>
+<section id="start" class="hero">
+  <span class="badge">Development Stage</span>
+  <span class="badge">Built on NEAR Protocol</span>
+  <span class="badge">Profile First</span>
 
-  <div class="panel">
-    <h3>System Status</h3>
-    <div class="grid" style="grid-template-columns:1fr">
-      <div class="card"><span>Factory Status</span><strong>DEVELOPMENT</strong></div>
-      <div class="card"><span>Blockchain Layer</span><strong>NEAR PROTOCOL</strong></div>
-      <div class="card"><span>OIM</span><strong>PERMANENT</strong></div>
-      <div class="card"><span>Target Completion</span><strong>Q3–Q4 2027</strong></div>
-    </div>
+  <h1>Near Intersect Volcano</h1>
+  <p><strong>Stablecoin Pressure Engine. Profile First. Token Later.</strong></p>
+  <p>
+    Near Intersect Volcano is a development-stage economic system designed around profiles,
+    stablecoin pressure, treasury reserves, and automatic eruption milestones.
+    Token deployment is not live yet.
+  </p>
+
+  <div class="nav">
+    <a href="#profile">Create Profile</a>
+    <a href="#near">NEAR</a>
+    <a href="#oim">OIM</a>
+    <a href="#birth">Token/Pie Birth</a>
+    <a href="#treasury">Treasury</a>
+    <a href="#eruptions">Eruptions</a>
+    <a href="#target">2027 Target</a>
+    <a href="#status">Status</a>
+    <a href="#engage">Engage</a>
+    <a href="#faq">FAQ</a>
   </div>
 </section>
 
-<section id="start">
-  <h2>Start Here</h2>
-  <div class="panel notice">
-    <h3>This is the corrected entry point.</h3>
-    <p>
-      The only user-click action during this development stage is profile creation. Eruptions are not user-triggered. They happen automatically only when system pressure reaches the active milestone.
+<section>
+  <h2>Public View Count</h2>
+  <div class="card">
+    <h3 id="viewCount">Loading...</h3>
+    <p class="muted">
+      This count is stored locally on this device unless connected to a public analytics service.
     </p>
   </div>
+</section>
 
-  <div class="grid">
-    <div class="card"><span>Step 1</span><strong>Create Profile</strong><p>Build your early participant record.</p></div>
-    <div class="card"><span>Step 2</span><strong>Connect NEAR Wallet</strong><p>Wallet-based access comes through NEAR wallet integration.</p></div>
-    <div class="card"><span>Step 3</span><strong>Token/Pie Birth</strong><p>Profile becomes future token foundation with permanent OIM.</p></div>
+<section>
+  <h2>Start Here</h2>
+  <div class="flow">
+    Create Profile → Read OIM → Watch System Status → Token/Pie Launch Later
+  </div>
+  <p>
+    Profile creation is the first action. Eruptions are automatic and milestone-based.
+    No user manually triggers an eruption.
+  </p>
+</section>
+
+<section id="profile">
+  <h2>Create Your Early Participant Profile</h2>
+  <p>
+    Create your early participant profile now. Your profile is saved on this device first.
+    No redirect. No wallet required. Token/Pie birth comes later after smart contract deployment,
+    audit, and public verification.
+  </p>
+
+  <div class="card">
+    <input id="profileName" placeholder="Profile name or alias" />
+    <input id="profileWallet" placeholder="NEAR wallet address optional" />
+    <button onclick="createProfile()">Create Profile — Join the Early Participant Record</button>
+    <div id="profileResult"></div>
   </div>
 </section>
 
 <section id="near">
-  <h2>Built on NEAR Protocol</h2>
-  <div class="panel near-notice">
-    <h3>Why NEAR matters</h3>
-    <p>
-      Near Intersect Volcano is designed around NEAR Protocol because the system needs fast transactions, low fees, wallet access, and smart contract execution that can publicly enforce rules instead of relying on hidden manual control.
-    </p>
-  </div>
-
+  <h2>NEAR Wallet</h2>
   <div class="grid">
     <div class="card">
-      <span>Access Layer</span>
-      <strong>NEAR Wallet</strong>
-      <p>Users connect through a NEAR wallet before future on-chain actions become available.</p>
+      <h3>Connect NEAR Wallet</h3>
+      <p>Wallet connection is planned for wallet-based access and future profile upgrades.</p>
+      <button onclick="walletPlaceholder()">Connect NEAR Wallet</button>
+      <p id="walletStatus"><strong>Status:</strong> Pending</p>
     </div>
     <div class="card">
-      <span>Execution Layer</span>
-      <strong>Smart Contracts</strong>
-      <p>Fee routing, OIM logic, pressure accumulation, milestone checks, and controlled release should be enforced by contract logic.</p>
+      <h3>Smart Contract Status</h3>
+      <p>Smart contract deployment is pending. Future participation depends on verified deployed contracts.</p>
     </div>
-    <div class="card">
-      <span>Trust Layer</span>
-      <strong>Public Verification</strong>
-      <p>When deployed, contract activity can be reviewed on-chain instead of hidden inside a private database.</p>
-    </div>
-  </div>
-
-  <div class="panel">
-    <p>
-      Current wallet and treasury areas on this page are developmental placeholders until the production NEAR contract is deployed, connected, tested, and verified.
-    </p>
   </div>
 </section>
 
 <section id="oim">
   <h2>OIM — Outpace Inflation Module</h2>
-
-  <div class="panel oim-notice">
-    <h3>Plain-English Definition</h3>
+  <div class="card">
     <p>
-      OIM is the anti-dilution engine. It controls when and how value becomes available so usable supply does not grow faster than real participation, treasury strength, and system activity.
+      OIM is the permanent protection layer of the system. It is designed to be built into every future
+      Token/Pie and also attached to treasury logic.
     </p>
     <p>
-      Most systems print, release, and dilute. OIM restricts, delays, builds pressure, and releases deliberately.
+      OIM is not a profit guarantee. It is a rules-based structure focused on long-term discipline,
+      reserve logic, and controlled system behavior.
     </p>
   </div>
+</section>
 
+<section id="birth">
+  <h2>Token/Pie Birth</h2>
   <div class="grid">
     <div class="card">
-      <span>OIM Function 1</span>
-      <strong>Supply Control</strong>
-      <p>OIM limits how much value can become freely available at once. This reduces uncontrolled release and dilution pressure.</p>
+      <h3>Profile First</h3>
+      <p>Each profile becomes the foundation for future participation.</p>
     </div>
-
     <div class="card">
-      <span>OIM Function 2</span>
-      <strong>Time Discipline</strong>
-      <p>OIM uses long-cycle thinking, lock logic, and controlled windows so the system rewards patience instead of panic exits.</p>
+      <h3>Token/Pie Later</h3>
+      <p>Future Token/Pie creation happens after contract deployment and public verification.</p>
     </div>
-
     <div class="card">
-      <span>OIM Function 3</span>
-      <strong>Pressure First</strong>
-      <p>Activity builds pressure before release. Value is not constantly emitted. It waits for defined system milestones.</p>
-    </div>
-
-    <div class="card">
-      <span>OIM Function 4</span>
-      <strong>Controlled Release</strong>
-      <p>When milestones are reached, the system releases by rule and keeps reserves inside the system for the next cycle.</p>
-    </div>
-
-    <div class="card">
-      <span>OIM Function 5</span>
-      <strong>Anti-Dilution Law</strong>
-      <p>The goal is to keep usable supply growth slower than system participation and treasury accumulation.</p>
-    </div>
-
-    <div class="card">
-      <span>OIM Function 6</span>
-      <strong>Treasury Discipline</strong>
-      <p>OIM applies at the system level too. Treasury routing must remain disciplined and match the deployed contract.</p>
+      <h3>Foundation Rule</h3>
+      <p>1 profile → 1 participant record → future Token/Pie foundation.</p>
     </div>
   </div>
+</section>
 
-  <div class="grid two">
+<section id="treasury">
+  <h2>Treasury</h2>
+  <div class="grid">
     <div class="card">
-      <h3>What Inflationary Systems Do</h3>
-      <ul>
-        <li>Constant emissions</li>
-        <li>Instant liquidity</li>
-        <li>Fast exits</li>
-        <li>Supply grows faster than demand</li>
-        <li>Late users absorb dilution</li>
-      </ul>
+      <h3>Treasury Status</h3>
+      <p>Pending until smart contracts and stablecoin routing are deployed.</p>
     </div>
-
     <div class="card">
-      <h3>What OIM Does</h3>
-      <ul>
-        <li>Restricts supply release</li>
-        <li>Builds pressure before release</li>
-        <li>Uses milestone-based eruption cycles</li>
-        <li>Reduces dilution risk</li>
-        <li>Aligns release with real participation</li>
-      </ul>
+      <h3>Stablecoin Pressure</h3>
+      <p>The system is designed around stablecoin-based pressure accumulation.</p>
+    </div>
+    <div class="card">
+      <h3>Reserve Logic</h3>
+      <p>Part of each eruption phase is retained to support the next phase.</p>
+    </div>
+    <div class="card">
+      <h3>Controlled Release</h3>
+      <p>Releases are milestone-based, not manually triggered by users.</p>
     </div>
   </div>
+</section>
 
-  <div class="panel danger-notice">
-    <h3>Important OIM Notice</h3>
+<section id="eruptions">
+  <h2>Eruption Law</h2>
+  <div class="card">
     <p>
-      OIM
+      Eruptions happen automatically when pressure reaches defined milestones.
+      No user can manually trigger an eruption.
+    </p>
+
+    <h3>Early Phase Examples</h3>
+    <p><strong>$100,000 pressure</strong> → $75,000 distributed / $25,000 reserved</p>
+    <p><strong>$250,000 pressure</strong> → $150,000 distributed / remainder reserved</p>
+
+    <h3>Eruption Phase Model</h3>
+    <p>
+      As the system scales, the model stabilizes toward a long-range
+      <strong>60% distributed / 40% retained</strong> structure.
+    </p>
+
+    <h3>Scaling Path</h3>
+    <p>
+      Eruption thresholds may progress through larger phases including millions, billions,
+      trillions, and beyond only if real system activity supports that scale.
+    </p>
+
+    <p>
+      There is no fixed maximum phase cap. Expansion is based on participation,
+      pressure, treasury rules, and verified system activity.
+    </p>
+  </div>
+</section>
+
+<section id="target">
+  <h2>2027 Target</h2>
+  <div class="grid">
+    <div class="card"><strong>Factory Status:</strong><p>Development</p></div>
+    <div class="card"><strong>Blockchain:</strong><p>NEAR Protocol</p></div>
+    <div class="card"><strong>OIM:</strong><p>Permanent</p></div>
+    <div class="card"><strong>Target Completion:</strong><p>Q3–Q4 2027</p></div>
+  </div>
+  <p class="muted">
+    Timeline is subject to smart contract deployment, audit, security review, and public verification.
+  </p>
+</section>
+
+<section id="status">
+  <h2>System Status</h2>
+  <div class="card">
+    <div class="status"><span>Website</span><span>Public</span></div>
+    <div class="status"><span>Profile System</span><span>Local / Active</span></div>
+    <div class="status"><span>Wallet Connect</span><span>Pending</span></div>
+    <div class="status"><span>Smart Contract</span><span>Pending</span></div>
+    <div class="status"><span>Treasury</span><span>Pending</span></div>
+    <div class="status"><span>Eruption Engine</span><span>Pending</span></div>
+  </div>
+</section>
+
+<section id="engage">
+  <h2>Engage Now</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Create Profile</h3>
+      <p>Join the early participant record on your device.</p>
+      <a class="btn" href="#profile">Create Profile</a>
+    </div>
+    <div class="card">
+      <h3>Read OIM</h3>
+      <p>Understand the permanent protection layer.</p>
+      <a class="btn" href="#oim">Read OIM</a>
+    </div>
+    <div class="card">
+      <h3>Share Project</h3>
+      <p>Share Near Intersect Volcano with others.</p>
+      <button onclick="shareSite()">Share</button>
+    </div>
+    <div class="card">
+      <h3>Follow Updates</h3>
+      <p>Watch the system move from profile stage toward launch stage.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Is the token live?</h3>
+      <p>No. Token/Pie launch comes later after deployment, audit, and verification.</p>
+    </div>
+    <div class="card">
+      <h3>Do profiles work now?</h3>
+      <p>Yes. Profiles save locally on the visitor’s device/browser.</p>
+    </div>
+    <div class="card">
+      <h3>Can others see my profile?</h3>
+      <p>Not yet. Without backend or blockchain storage, profiles are local to the device.</p>
+    </div>
+    <div class="card">
+      <h3>Do eruptions happen by button?</h3>
+      <p>No. Eruptions are automatic milestone events when system pressure reaches defined thresholds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="warning">
+  <h2>Trust & Legal Clarity</h2>
+  <p>
+    Near Intersect Volcano is a development-stage system. Nothing on this page is financial,
+    investment, tax, or legal advice.
+  </p>
+  <p>
+    No guaranteed returns. No promise of profit. No guarantee that any future phase,
+    treasury level, eruption threshold, or token launch will occur.
+  </p>
+  <p>
+    Future participation depends on deployed smart contracts, security review, public verification,
+    and applicable law.
+  </p>
+</section>
+
+<div class="footer">
+  <p>Near Intersect Volcano — Stablecoin Pressure Engine. Profile First. Token Later.</p>
+</div>
+
+</main>
+
+<script>
+// PROFILE LAW — LOCKED
+// 1. Profile creation works now.
+// 2. No redirect after profile creation.
+// 3. No page/interface replacement before Token/Pie launch.
+// 4. Profile saves locally on the visitor’s device/browser.
+// 5. Wallet connection is optional until launch.
+// 6. On-chain upgrade happens later only after contract deployment.
+
+function createProfile(){
+  const name = document.getElementById("profileName").value.trim();
+  const wallet = document.getElementById("profileWallet").value.trim();
+
+  if(!name){
+    alert("Enter a profile name or alias.");
+    return;
+  }
+
+  const existing = localStorage.getItem("nearIntersectProfile");
+  let participantNumber = localStorage.getItem("nearIntersectParticipantNumber");
+
+  if(!participantNumber){
+    participantNumber = Math.floor(100000 + Math.random() * 900000);
+    localStorage.setItem("nearIntersectParticipantNumber", participantNumber);
+  }
+
+  const profile = {
+    id: existing ? JSON.parse(existing).id : "NIV-" + Date.now(),
+    participantNumber: participantNumber,
+    name: name,
+    wallet: wallet || "Not connected yet",
+    createdAt: existing ? JSON.parse(existing).createdAt : new Date().toLocaleString(),
+    updatedAt: new Date().toLocaleString(),
+    status: "Early Participant — Local Profile"
+  };
+
+  localStorage.setItem("nearIntersectProfile", JSON.stringify(profile));
+  showProfile();
+}
+
+function showProfile(){
+  const saved = localStorage.getItem("nearIntersectProfile");
+  const result = document.getElementById("profileResult");
+
+  if(!saved || !result) return;
+
+  const profile = JSON.parse(saved);
+
+  result.innerHTML = `
+    <div class="profile-badge">
+      <h3>Profile Created</h3>
+      <p><strong>Participant #:</strong> ${profile.participantNumber}</p>
+      <p><strong>ID:</strong> ${profile.id}</p>
+      <p><strong>Name:</strong> ${profile.name}</p>
+      <p><strong>Wallet:</strong> ${profile.wallet}</p>
+      <p><strong>Status:</strong> ${profile.status}</p>
+      <p><strong>Created:</strong> ${profile.createdAt}</p>
+      <p><strong>Last Updated:</strong> ${profile.updatedAt}</p>
+      <p class="muted">Saved locally on this device. No redirect. No interface change before Token/Pie launch.</p>
+    </div>
+  `;
+}
+
+function updateViewCount(){
+  let views = Number(localStorage.getItem("nivViews") || 0);
+  views += 1;
+  localStorage.setItem("nivViews", views);
+  document.getElementById("viewCount").innerText = views.toLocaleString() + " local views on this device";
+}
+
+function walletPlaceholder(){
+  document.getElementById("walletStatus").innerHTML =
+    "<strong>Status:</strong> Wallet connect pending until launch integration.";
+}
+
+function shareSite(){
+  const shareData = {
+    title: "Near Intersect Volcano",
+    text: "Near Intersect Volcano — Stablecoin Pressure Engine. Profile First. Token Later.",
+    url: window.location.href
+  };
+
+  if(navigator.share){
+    navigator.share(shareData);
+  }else{
+    navigator.clipboard.writeText(window.location.href);
+    alert("Site link copied.");
+  }
+}
+
+window.addEventListener("load", function(){
+  updateViewCount();
+  showProfile();
+});
+</script>
+
+</body>
+</html>
