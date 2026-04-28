@@ -122,17 +122,22 @@ function login() {
   const su = localStorage.getItem("user");
   const sp = localStorage.getItem("pass");
 
+  if (!su || !sp) {
+    setStatus("No profile found. Create one first.");
+    return;
+  }
+
   if (u === su && p === sp) {
     localStorage.setItem("logged", "true");
     setStatus("Logged in as " + u);
   } else {
-    setStatus("Login failed");
+    setStatus("Incorrect username or password.");
   }
 }
 
 function logout() {
   localStorage.setItem("logged", "false");
-  setStatus("Logged out");
+  setStatus("Logged out.");
 }
 
 function setStatus(msg) {
