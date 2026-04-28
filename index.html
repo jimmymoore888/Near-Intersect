@@ -1,75 +1,73 @@
-<script>
-function createProfile() {
-  const u = document.getElementById("username").value.trim();
-  const p = document.getElementById("password").value.trim();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Near Intersect Volcano</title>
 
-  if (!u || !p) {
-    setStatus("Enter username and password.");
-    return;
-  }
-
-  localStorage.setItem("user", u);
-  localStorage.setItem("pass", p);
-  localStorage.setItem("logged", "true");
-
-  setStatus("Profile created. Logged in as " + u);
-  updateUI();
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#040505;
+  color:#f4f4f4;
 }
 
-function login() {
-  const u = document.getElementById("username").value.trim();
-  const p = document.getElementById("password").value.trim();
-
-  const su = localStorage.getItem("user");
-  const sp = localStorage.getItem("pass");
-
-  if (u === su && p === sp) {
-    localStorage.setItem("logged", "true");
-    setStatus("Logged in as " + u);
-    updateUI();
-  } else {
-    setStatus("Login failed");
-  }
+main {
+  max-width:900px;
+  margin:auto;
+  padding:20px;
 }
 
-function logout() {
-  localStorage.setItem("logged", "false");
-  setStatus("Logged out");
-  updateUI();
+h1 {
+  color:#00ffd5;
 }
 
-function setStatus(msg) {
-  document.getElementById("status").innerText = msg;
+.card {
+  background:#0b0d0d;
+  border:1px solid #262b2b;
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
 }
+</style>
+</head>
 
-function updateUI() {
-  const u = localStorage.getItem("user");
-  const logged = localStorage.getItem("logged");
+<body>
 
-  const usernameInput = document.getElementById("username");
-  const passwordInput = document.getElementById("password");
+<h1 style="text-align:center;">TEST PAGE LOADED</h1>
 
-  if (u) {
-    usernameInput.value = u;
-  }
+<main>
 
-  if (logged === "true") {
-    usernameInput.disabled = true;
-    passwordInput.disabled = true;
-  } else {
-    usernameInput.disabled = false;
-    passwordInput.disabled = false;
-  }
-}
+<h1>NEAR INTERSECT VOLCANO</h1>
 
-window.onload = function () {
-  const u = localStorage.getItem("user");
-  const logged = localStorage.getItem("logged");
+<section class="card">
+  <h2>Public View Count</h2>
 
-  if (u && logged === "true") {
-    setStatus("Logged in as " + u);
-  }
+  <div style="font-size:22px; color:#00ffd5;">
+    68,291 launch-watchers waiting for launch 🚀
+  </div>
 
-  updateUI();
-};
-</script>
+  <div style="margin-top:8px; color:#aaa;">
+    +1 local view on this device
+  </div>
+
+  <div style="color:#aaa;">
+    2,783 shares
+  </div>
+</section>
+
+<section class="card">
+  <h2>Create Profile</h2>
+
+  <p>
+    Profile system is being prepared. Full access will unlock with wallet connection.
+  </p>
+
+  <button disabled>Create Profile (Coming Soon)</button>
+</section>
+
+</main>
+
+</body>
+</html>
