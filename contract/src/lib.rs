@@ -86,8 +86,7 @@ impl Contract {
         let treasury = amount * TREASURY_BPS / BPS_DENOMINATOR;
         let growth = amount * GROWTH_BPS / BPS_DENOMINATOR;
         let volcano = amount * VOLCANO_BPS / BPS_DENOMINATOR;
-        let permanent_treasury_reserve =
-            amount * PERMANENT_TREASURY_RESERVE_BPS / BPS_DENOMINATOR;
+        let permanent_treasury_reserve = amount * PERMANENT_TREASURY_RESERVE_BPS / BPS_DENOMINATOR;
         let core_ops = amount * CORE_OPS_BPS / BPS_DENOMINATOR;
 
         let total_fee = treasury + growth + volcano + permanent_treasury_reserve + core_ops;
