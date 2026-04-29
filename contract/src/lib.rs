@@ -10,7 +10,7 @@ const OPERATIONS_WALLET: &str = "jwmoore.near";
 const TREASURY_BPS: u128 = 140;   // 1.40%
 const GROWTH_BPS: u128 = 90;      // 0.90%
 const VOLCANO_BPS: u128 = 105;    // 1.05%
-const RESERVE_BPS: u128 = 55;     // 0.55%
+const PERMANENT_TREASURY_RESERVE_BPS: u128 = 55; // 0.55%
 const CORE_OPS_BPS: u128 = 110;   // 1.10%
 
 #[near(contract_state)]
@@ -43,7 +43,11 @@ impl Contract {
         require!(!env::state_exists(), "Already initialized");
 
         require!(
-            TREASURY_BPS + GROWTH_BPS + VOLCANO_BPS + RESERVE_BPS + CORE_OPS_BPS
+            TREASURY_BPS
+                + GROWTH_BPS
+                + VOLCANO_BPS
+                + PERMANENT_TREASURY_RESERVE_BPS
+                + CORE_OPS_BPS
                 == SYSTEM_FEE_BPS,
             "Fee split must equal 5%"
         );
@@ -82,10 +86,11 @@ impl Contract {
         let treasury = amount * TREASURY_BPS / BPS_DENOMINATOR;
         let growth = amount * GROWTH_BPS / BPS_DENOMINATOR;
         let volcano = amount * VOLCANO_BPS / BPS_DENOMINATOR;
-        let reserve = amount * RESERVE_BPS / BPS_DENOMINATOR;
+        let permanent_treasury_reserve =
+            amount * PERMANENT_TREASURY_RESERVE_BPS / BPS_DENOMINATOR;
         let core_ops = amount * CORE_OPS_BPS / BPS_DENOMINATOR;
 
-        let total_fee = treasury + growth + volcano + reserve + core_ops;
+        let total_fee = treasury + growth + volcano + permanent_treasury_reserve + core_ops;
         let expected_fee = amount * SYSTEM_FEE_BPS / BPS_DENOMINATOR;
 
         require!(total_fee <= expected_fee, "Fee math error");
@@ -97,7 +102,7 @@ impl Contract {
             .transfer(NearToken::from_yoctonear(growth));
 
         Promise::new(self.reserve_wallet.clone())
-            .transfer(NearToken::from_yoctonear(reserve));
+            .transfer(NearToken::from_yoctonear(permanent_treasury_reserve));
 
         Promise::new(self.operations_wallet.clone())
             .transfer(NearToken::from_yoctonear(core_ops));
@@ -112,14 +117,14 @@ impl Contract {
         }
 
         env::log_str(&format!(
-            "DEPOSIT amount={} caller={} total_fee={} treasury={} growth={} volcano={} reserve={} core_ops={} pressure={} participants={}",
+            "DEPOSIT amount={} caller={} total_fee={} treasury={} growth={} volcano={} permanent_treasury_reserve={} core_ops={} pressure={} participants={}",
             amount,
             caller,
             total_fee,
             treasury,
             growth,
             volcano,
-            reserve,
+            permanent_treasury_reserve,
             core_ops,
             self.volcano_pressure,
             self.participants.len()
