@@ -5,7 +5,7 @@ use near_sdk::{
 const BPS_DENOMINATOR: u128 = 10_000;
 const SYSTEM_FEE_BPS: u128 = 500; // 5.00%
 
-const OPERATIONS_WALLET: &str = "jwmoore.near";
+const OPERATIONS_WALLET: &str = "lawdeploy.near";
 
 const TREASURY_BPS: u128 = 140;   // 1.40%
 const GROWTH_BPS: u128 = 90;      // 0.90%
