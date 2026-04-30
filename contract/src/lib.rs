@@ -13,6 +13,10 @@ const VOLCANO_BPS: u128 = 105;    // 1.05%
 const RESERVE_BPS: u128 = 55;     // 0.55%
 const CORE_OPS_BPS: u128 = 110;   // 1.10%
 
+const CREATE_TOKEN_FEE_YOCTO: u128 = 32_000_000_000_000_000_000_000; // 0.032 NEAR
+const CREATE_TOKEN_TREASURY_YOCTO: u128 = 16_000_000_000_000_000_000_000; // 0.016 NEAR
+const CREATE_TOKEN_PRESSURE_YOCTO: u128 = 16_000_000_000_000_000_000_000; // 0.016 NEAR
+
 #[near(contract_state)]
 #[derive(PanicOnDefault)]
 pub struct Contract {
@@ -29,6 +33,7 @@ pub struct Contract {
     pub next_eruption_threshold: u128,
     pub next_distribution_amount: u128,
     pub eruption_count: u64,
+    pub created_token_count: u64,
 }
 
 #[near]
@@ -48,6 +53,12 @@ impl Contract {
             "Fee split must equal 5%"
         );
 
+        require!(
+            CREATE_TOKEN_TREASURY_YOCTO + CREATE_TOKEN_PRESSURE_YOCTO
+                == CREATE_TOKEN_FEE_YOCTO,
+            "Creation fee split mismatch"
+        );
+
         let operations_wallet: AccountId = OPERATIONS_WALLET
             .parse()
             .expect("Invalid operations wallet");
@@ -65,6 +76,7 @@ impl Contract {
             next_eruption_threshold: NearToken::from_near(100_000).as_yoctonear(),
             next_distribution_amount: NearToken::from_near(75_000).as_yoctonear(),
             eruption_count: 0,
+            created_token_count: 0,
         }
     }
 
@@ -123,6 +135,46 @@ impl Contract {
             core_ops,
             self.volcano_pressure,
             self.participants.len()
+        ));
+    }
+
+    #[payable]
+    pub fn create_token(&mut self) {
+        let amount = env::attached_deposit().as_yoctonear();
+
+        require!(
+            amount >= CREATE_TOKEN_FEE_YOCTO,
+            "Minimum creation fee is 0.032 NEAR"
+        );
+
+        let caller = env::predecessor_account_id();
+
+        if !self.participants.contains(&caller) {
+            self.participants.push(caller.clone());
+        }
+
+        Promise::new(self.treasury_wallet.clone())
+            .transfer(NearToken::from_yoctonear(CREATE_TOKEN_TREASURY_YOCTO));
+
+        self.volcano_pressure = self
+            .volcano_pressure
+            .checked_add(CREATE_TOKEN_PRESSURE_YOCTO)
+            .expect("Pressure overflow");
+
+        self.created_token_count += 1;
+
+        if self.volcano_pressure >= self.next_eruption_threshold {
+            self.trigger_eruption();
+        }
+
+        env::log_str(&format!(
+            "TOKEN_CREATED creator={} fee={} treasury={} pressure_added={} token_number={} pressure={}",
+            caller,
+            amount,
+            CREATE_TOKEN_TREASURY_YOCTO,
+            CREATE_TOKEN_PRESSURE_YOCTO,
+            self.created_token_count,
+            self.volcano_pressure
         ));
     }
 
@@ -188,11 +240,19 @@ impl Contract {
         self.eruption_count
     }
 
+    pub fn get_created_token_count(&self) -> u64 {
+        self.created_token_count
+    }
+
     pub fn get_participant_count(&self) -> u64 {
         self.participants.len() as u64
     }
 
     pub fn get_participants(&self) -> Vec<AccountId> {
         self.participants.clone()
+    }
+
+    pub fn get_create_token_fee_yocto(&self) -> u128 {
+        CREATE_TOKEN_FEE_YOCTO
     }
 }
