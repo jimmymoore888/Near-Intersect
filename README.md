@@ -9,250 +9,72 @@ HOMETOWN CABOT ARKANSAS
 ESTIMATED VALUE: $23,000,000.00 USD 
 ---
 
-## 1. WHAT THIS IS
+# NEAR INTERSECT VOLCANO
 
-Near-Intersect is a system that allows anyone to create a digital asset governed by enforced economic laws, not speculation.
+**Stablecoin Pressure Engine. Profile First. Token Later.**
 
-Each asset is not just a token — it is a self-contained financial system with:
-
-- Built-in treasury behavior  
-- Controlled capital flows  
-- Long-term savings mechanisms  
-- Enforced structural discipline  
+Original creation reference: August 3, 2019  
+Project status: Development-stage  
+Target network: NEAR Protocol  
+Public website: nearintersectvolcano.com  
 
 ---
 
-## 2. WHY THIS EXISTS
+## 1. Current Status
 
-Most digital assets fail due to:
+Near Intersect Volcano is a development-stage rules-based financial protocol concept built for NEAR Protocol.
 
-- Lack of structure  
-- Short-term incentives  
-- No resistance to inflation  
-- Dependence on hype cycles  
+The public website is live.
 
-Near-Intersect removes these weaknesses by embedding rules directly into the asset itself.
+The profile system is local/browser-based.
 
-The system does not rely on user behavior.
+Wallet connection, smart contract execution, treasury execution, eruption engine execution, and public fund-taking launch are pending until verified.
 
-It defines the environment in which behavior occurs.
+No public user should treat this repository, the website, or any interface preview as proof that the full on-chain Volcano system is live.
 
 ---
 
-## 3. SYSTEM ARCHITECTURE (MENTAL MODEL)
+## 2. Canonical Pre-Launch Law
 
-Near-Intersect operates across three layers:
+This repository follows the Near Intersect Volcano Canonical Pre-Launch Law.
 
-### RagTuff (Law Layer)
-- The constitutional rule set  
-- Enforces invariants  
-- Prevents manipulation or bypassing of core logic  
+All public surfaces and code surfaces must match the same law:
 
-### Near-Intersect (Factory Layer)
-- The creation engine  
-- Applies rules automatically  
-- Assigns economic structure  
+- `README.md`
+- `index.html`
+- `MODULE_08_OUTPACE_INFLATION.md`
+- `MODULE_13_TREASURY_PERFORMANCE.md`
+- `WHITEPAPER.md`
+- `contract/src/lib.rs`
+- `contract/Cargo.toml`
+- `near_intersect_factory.wasm`
 
-### Token (Instance Layer)
-- Your created asset  
-- Your treasury system  
-- Your user network  
+No file may contradict the canonical law.
 
----
-
-## 4. WHAT HAPPENS WHEN YOU CREATE A TOKEN
-
-1. You create a token through Near-Intersect  
-2. The system automatically assigns:
-   - OIM (Outpace Inflation Module) — mandatory  
-   - 3 additional modules (randomized)  
-3. Treasury is initialized  
-4. Capital flow rules activate  
-5. Savings vault begins tracking long-term allocations  
-6. Asset becomes live and usable  
-
-At this point, you are operating a structured financial system — not just holding a token.
+No old economic model may override the canonical law.
 
 ---
 
-## 5. HOW MONEY MOVES (CORE ECONOMICS)
+## 3. Project Purpose
 
-### Capital Flow Fee
+Near Intersect Volcano is designed as a rules-based protocol framework for disciplined treasury routing, stablecoin pressure accounting, milestone-based eruption logic, long-term lock behavior, and purchasing-power-aware system design.
 
-Every movement of capital (in or out) includes a:
+The system is designed to reduce discretionary control.
 
-**1.15% structured flow fee**
+The system is not designed to promise profit.
 
-This supports:
+The system is not investment advice.
 
-- Treasury growth  
-- System sustainability  
-- Long-term participant value  
+The system is not a guarantee of returns.
 
 ---
 
-### Treasury Allocation
+## 4. Core Identity
 
-Capital entering the system is programmatically distributed into:
+Near Intersect Volcano is built around this operating idea:
 
-- Liquidity support  
-- Savings mechanisms  
-- Stability functions  
-
-No manual control. No discretionary overrides.
-
----
-
-### Savings Vault (16-Year Cycle)
-
-A portion of value is locked into a deterministic schedule:
-
-- Total duration: 16 years  
-- Unlock frequency: every 2 years  
-- Access window: 7 days  
-- Then relocked automatically  
-
-This creates:
-
-- Long-term alignment  
-- Reduced volatility  
-- Predictable liquidity events  
-
----
-
-## 6. OUTPACE INFLATION MODULE (OIM)
-
-Every asset includes OIM by default.
-
-Purpose:
-
-- Counter long-term value erosion  
-- Enforce disciplined capital allocation  
-- Prevent short-term extraction  
-
-This is a core differentiator of the system.
-
----
-
-## 7. MODULE SYSTEM (STRUCTURAL UNIQUENESS)
-
-Each token includes:
-
-- OIM (fixed)  
-- + 3 randomized modules  
-
-Results:
-
-- Each asset behaves differently  
-- Economic profiles vary  
-- No identical token structures  
-
-All assets follow the same laws, but no two are the same.
-
----
-
-## 8. WHAT YOU GAIN AS AN INVESTOR
-
-### Structured Growth
-System-driven, not hype-driven.
-
-### Controlled Risk
-Behavior is constrained by design.
-
-### Long-Term Value Cycles
-Driven by enforced savings and unlock schedules.
-
-### Network Expansion Potential
-As participation increases:
-
-- Capital inflow increases  
-- Treasury grows  
-- System activity compounds  
-
----
-
-## 9. EXAMPLE SCENARIO
-
-If $100,000 enters the system:
-
-- 1.15% is captured as a flow fee  
-- Remaining capital is allocated into:
-  - Treasury  
-  - Liquidity  
-  - Savings vault  
-
-Over time:
-
-- Locked capital accumulates  
-- Unlock cycles release value predictably  
-- System continues compounding through usage  
-
----
-
-## 10. HOW TO GET STARTED
-
-Requirements:
-
-- NEAR CLI (command-line interface for deployment)
-
-Basic Steps:
-
-1. Set environment  
-2. Deploy contract  
-3. Initialize token  
-4. Begin participation  
-
----
-
-## 11. ROADMAP
-
-### Phase 1
-- Core factory deployment  
-- Token creation  
-- Module assignment  
-
-### Phase 2
-- Module expansion  
-- Registry and discoverability  
-
-### Phase 3
-- Real capital integration  
-- Scaled onboarding  
-
----
-
-## 12. PHILOSOPHY
-
-Most systems rely on users behaving correctly.
-
-Near-Intersect builds systems where correct behavior is enforced.
-
-- Rules are fixed  
-- Behavior is guided  
-- Outcomes are structured  
-
----
-
-## FINAL POSITION
-
-Near-Intersect is not designed to create hype-driven assets.
-
-It defines a new category:
-
-**Assets that behave correctly by design**
-
----
-
-## NEXT STEPS
-
-If evaluating:
-- Study capital flow mechanics  
-- Understand lock cycles  
-- Review module behavior  
-
-If participating:
-- Create your asset  
-- Build your network  
-- Allow the system to operate over time  
-
----
+```text
+Profile First.
+Token Later.
+Rules Before Launch.
+Verification Before Public Funds.
