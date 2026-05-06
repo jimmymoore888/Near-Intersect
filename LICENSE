@@ -2,9 +2,85 @@ Copyright (c) 2026 Jimmy W Moore
 Cabot Arkansas 72023
 All rights reserved.
 
-This repository and its contents are proprietary and confidential.
-No license is granted to use, copy, modify, merge, publish, distribute,
-sublicense, or deploy any part of this work without explicit written
-permission from the copyright holder.
+NEAR INTERSECT VOLCANO SOURCE-AVAILABLE LICENSE
 
-For licensing, acquisition, or partnership inquiries, contact the author.
+Copyright (c) 2026 Jimmy W Moore.
+All rights reserved.
+
+Project: Near Intersect Volcano
+Repository: Near-Intersect
+Author / Designer: Jimmy W Moore
+
+1. Purpose
+
+This repository is made publicly visible for review, transparency, education, research, protocol discussion, and pre-launch verification.
+
+Public visibility does not grant ownership, commercial rights, deployment rights, resale rights, sublicensing rights, or the right to rebrand this work.
+
+2. Ownership
+
+Near Intersect Volcano, Near-Intersect, the Canonical Pre-Launch Law, protocol architecture, documentation, source code, website content, module designs, treasury logic, OIM doctrine, TPI doctrine, eruption law, and related materials remain the intellectual property of Jimmy W Moore unless a separate written agreement says otherwise.
+
+3. Permitted Use
+
+You may:
+
+- read the repository
+- inspect the source code
+- review the documentation
+- discuss the architecture
+- report bugs or security concerns
+- reference the project for non-commercial research or review with proper attribution
+
+4. Prohibited Use
+
+You may not, without written permission from Jimmy W Moore:
+
+- copy this project for commercial use
+- deploy this system or a derivative system
+- rebrand this system
+- sell this system
+- sublicense this system
+- use the smart contract code in a competing protocol
+- use the website, design, doctrine, or module structure in a competing commercial product
+- remove attribution
+- claim ownership of the system
+- represent this repository as audited, verified, production-live, or investment-approved
+
+5. No Financial Representation
+
+Nothing in this repository, license, website, source code, whitepaper, README, module document, screenshot, or related material is financial, investment, tax, or legal advice.
+
+There are no guaranteed returns.
+
+There is no promise of profit.
+
+There is no guarantee that any phase, eruption, token, treasury level, savings result, distribution, purchasing-power outcome, or launch milestone will occur.
+
+6. Development-Stage Notice
+
+Near Intersect Volcano is development-stage unless and until the matching Rust contract, WASM artifact, deployed contract account, source commit hash, explorer link, audit status, security review, and legal review are publicly verified.
+
+No public fund-taking launch is authorized by this license.
+
+7. No Warranty
+
+This work is provided as-is.
+
+No warranty is provided.
+
+The author makes no guarantee that the software is secure, complete, error-free, profitable, legally compliant in all jurisdictions, suitable for production, or fit for any particular purpose.
+
+8. Security Review
+
+Security researchers may inspect the public repository and report issues.
+
+Security review does not grant permission to exploit, deploy, commercialize, or misuse the system.
+
+9. Written Permission
+
+Any use outside the permitted review and research scope requires written permission from Jimmy W Moore.
+
+10. Reservation of Rights
+
+All rights not expressly granted in this license are reserved.
