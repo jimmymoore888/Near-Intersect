@@ -1,1 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-site-verification" content="p1eykMb_ja95-XOyvDAsHaG3vpWGCgNBzEkf1UEtaWg" />
+<title>Near Intersect Volcano</title>
 
+<style>
+:root{
+  --bg:#050000;
+  --panel:rgba(12,14,12,.88);
+  --line:#332018;
+  --green:#00ffd5;
+  --gold:#d6a84f;
+  --lava:#ff3b00;
+  --darkred:#2b0500;
+  --text:#f4f4f4;
+  --muted:#aaa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255,80,0,.45), transparent 16%),
+    radial-gradient(circle at 50% 30%, rgba(255,180,40,.22), transparent 20%),
+    linear-gradient(145deg,#030000 0%,#130300 36%,#03110d 72%,#000 100%);
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,transparent 0%,rgba(255,60,0,.18) 56%,rgba(255,145,0,.28) 100%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 8px);
+  z-index:-2;
+}
+body:after{
+  content:"₮  ◇  $  ◇  ₮  $";
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:4%;
+  text-align:center;
+  font-size:42px;
+  letter-spacing:22px;
+  color:rgba(214,168,79,.16);
+  pointer-events:none;
+  z-index:-1;
+}
+main{max-width:1180px;margin:auto;padding:28px 18px}
+section{margin:54px 0}
+.hero,.card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:var(--panel);
+  box-shadow:0 0 28px rgba(255,60,0,.12);
+}
+.hero{
+  padding:34px;
+  background:linear-gradient(135deg,rgba(15,3,0,.94),rgba(6,28,22,.9),rgba(0,0,0,.94));
+}
+.card{padding:22px}
+.badge{
+  display:inline-block;
+  padding:8px 13px;
+  border:1px solid var(--green);
+  border-radius:999px;
+  color:var(--green);
+  font-size:13px;
+  margin:5px 5px 5px 0;
+}
+h1{font-size:42px;margin:18px 0 10px;color:var(--lava)}
+h2{font-size:30px;margin-bottom:12px;color:var(--green)}
+h3{color:var(--gold)}
+p{line-height:1.65;color:#ddd}
+.muted{color:var(--muted)}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.nav a,.btn,button{
+  display:inline-block;
+  padding:13px 18px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  color:var(--text);
+  text-decoration:none;
+  background:#050505;
+  font-size:14px;
+  cursor:pointer;
+}
+.nav a:hover,.btn:hover,button:hover{border-color:var(--lava);color:var(--lava)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}
+.card strong{color:var(--green)}
+input{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:#050505;
+  color:var(--text);
+  font-size:15px;
+}
+.profile-badge{
+  margin-top:18px;
+  padding:18px;
+  border:1px solid var(--green);
+  border-radius:16px;
+  background:#071312;
+}
+.status{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+}
+.status span:last-child{color:var(--gold)}
+.flow{
+  font-size:20px;
+  padding:20px;
+  border:1px solid var(--lava);
+  border-radius:18px;
+  text-align:center;
+  background:#1a0703;
+}
+.phase-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+  overflow:hidden;
+  border-radius:14px;
+}
+.phase-table th,.phase-table td{
+  border:1px solid var(--line);
+  padding:10px;
+  text-align:left;
+}
+.phase-table th{color:var(--gold);background:#160603}
+.warning{
+  border:1px solid var(--gold);
+  border-radius:18px;
+  padding:20px;
+  background:#161207;
+}
+.footer{
+  border-top:1px solid var(--line);
+  padding:30px 0;
+  color:var(--muted);
+  font-size:14px;
+}
+.pr-blink{
+  display:inline-block;
+  margin-left:8px;
+  color:#00ffd5;
+  font-weight:700;
+  letter-spacing:1px;
+  animation:prBlinkCycle 6s infinite;
+}
+@keyframes prBlinkCycle{
+  0%,49.99%{
+    opacity:1;
+    visibility:visible;
+  }
+  50%,100%{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<section id="start" class="hero">
+  <span class="badge">Development Stage</span>
+  <span class="badge">Built on NEAR Protocol</span>
+  <span class="badge">Profile First</span>
+
+  <h1>Near Intersect Volcano</h1>
+  <p><strong>Stablecoin Pressure Engine. Profile First. Token Later.</strong></p>
+  <p>
+    Near Intersect Volcano is a development-stage economic system designed around profiles,
+    stablecoin pressure, treasury reserves, and automatic eruption milestones.
+    Token deployment is not live yet.
+    <span id="prBlink" class="pr-blink"></span>
+  </p>
+
+  <div class="nav">
+    <a href="#profile">Create Profile</a>
+    <a href="#near">NEAR</a>
+    <a href="#oim">OIM</a>
+    <a href="#birth">Token/Pie Birth</a>
+    <a href="#treasury">Treasury</a>
+    <a href="#eruptions">Eruptions</a>
+    <a href="#target">2027 Target</a>
+    <a href="#status">Status</a>
+    <a href="#engage">Engage</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</section>
+
+<section>
+  <h2>Public View Count</h2>
+  <div class="card">
+    <h3>38,792 watchers waiting for launch 🚀</h3>
+    <p>+ <span id="localCount">1</span> device — your device</p>
+    <p class="muted">Watcher count shows early system awareness. Device count shows this browser’s local record.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Start Here</h2>
+  <div class="flow">Create Profile → Read OIM → Watch System Status → Token/Pie Launch Later</div>
+  <p>Profile creation is the first action. Eruptions are automatic and milestone-based. No user manually triggers an eruption.</p>
+</section>
+
+<section id="profile">
+  <h2>Create Your Early Watcher Profile</h2>
+  <p>Create your early watcher profile now. Saved on this device. No redirect. No wallet required. Token/Pie launch comes later.</p>
+  <div class="card">
+    <input id="username" placeholder="Username" />
+    <input id="password" type="password" placeholder="Password" />
+    <input id="profileName" placeholder="Profile name or alias" />
+    <input id="profileWallet" placeholder="NEAR wallet optional" />
+    <button onclick="createProfile()">Create Profile — Watch for Launch 🚀</button>
+    <div id="profileResult"></div>
+  </div>
+</section>
+
+<section id="near">
+  <h2>NEAR Wallet</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Connect NEAR Wallet</h3>
+      <p>Wallet connection is planned for wallet-based access and future profile upgrades.</p>
+      <button onclick="walletPlaceholder()">Connect NEAR Wallet</button>
+      <p id="walletStatus"><strong>Status:</strong> Pending</p>
+    </div>
+    <div class="card">
+      <h3>Smart Contract Status</h3>
+      <p>Smart contract deployment is pending. Future participation depends on verified deployed contracts.</p>
+    </div>
+  </div>
+</section>
+
+<section id="oim">
+  <h2>OIM — Outpace Inflation Module</h2>
+  <div class="card">
+    <p>OIM is the permanent protection layer of the system. It is designed to be built into every future Token/Pie and also attached to treasury logic.</p>
+    <p>OIM is not a profit guarantee. It is a rules-based structure focused on long-term discipline, reserve logic, and controlled system behavior.</p>
+  </div>
+</section>
+
+<section id="birth">
+  <h2>Token/Pie Birth</h2>
+  <div class="grid">
+    <div class="card"><h3>Profile First</h3><p>Each profile becomes the foundation for future participation.</p></div>
+    <div class="card"><h3>Token/Pie Later</h3><p>Future Token/Pie creation happens after contract deployment and public verification.</p></div>
+    <div class="card"><h3>Foundation Rule</h3><p>1 profile → 1 watcher record → future Token/Pie foundation.</p></div>
+  </div>
+</section>
+
+<section id="treasury">
+  <h2>Treasury</h2>
+  <div class="grid">
+    <div class="card"><h3>Treasury Status</h3><p>Pending until smart contracts and stablecoin routing are deployed.</p></div>
+    <div class="card"><h3>Stablecoin Pressure</h3><p>The system is designed around stablecoin-based pressure accumulation.</p></div>
+    <div class="card"><h3>Reserve Logic</h3><p>Part of each eruption phase is retained to support the next phase.</p></div>
+    <div class="card"><h3>Controlled Release</h3><p>Releases are milestone-based, not manually triggered by users.</p></div>
+  </div>
+</section>
+
+<section id="eruptions">
+  <h2>Eruption Law</h2>
+  <div class="card">
+    <p><strong>Eruptions happen automatically when the system reaches a pressure milestone. No person, owner, or system can manually trigger an eruption.</strong></p>
+    <p>Think of it like this: when the volcano fills up to a line, it erupts on its own.</p>
+    <p>When an eruption happens, a portion is shared equally and a portion is reserved for future growth.</p>
+    <p>Phase 1 is a Genesis Bootstrap Exception: 75% distributed / 25% retained.</p>
+    <p>After Phase 1, the system follows the standard structure: <strong>60% shared equally / 40% reserved until the next milestone is reached.</strong></p>
+    <p>Larger milestones only occur if real participation supports scale. Nothing is forced. Nothing is guaranteed.</p>
+
+    <table class="phase-table">
+      <tr><th>Phase</th><th>Pressure Milestone</th><th>Distributed</th><th>Reserved / Retained</th></tr>
+      <tr><td>1</td><td>$100,000</td><td>$75,000</td><td>$25,000</td></tr>
+      <tr><td>2</td><td>$250,000</td><td>$150,000</td><td>$100,000</td></tr>
+      <tr><td>3</td><td>$500,000</td><td>$300,000</td><td>$200,000</td></tr>
+      <tr><td>4</td><td>$1,000,000</td><td>$600,000</td><td>$400,000</td></tr>
+      <tr><td>5</td><td>$2,500,000</td><td>$1,500,000</td><td>$1,000,000</td></tr>
+      <tr><td>6</td><td>$5,000,000</td><td>$3,000,000</td><td>$2,000,000</td></tr>
+      <tr><td>7</td><td>$10,000,000</td><td>$6,000,000</td><td>$4,000,000</td></tr>
+      <tr><td>8</td><td>$25,000,000</td><td>$15,000,000</td><td>$10,000,000</td></tr>
+      <tr><td>9</td><td>$50,000,000</td><td>$30,000,000</td><td>$20,000,000</td></tr>
+      <tr><td>10</td><td>$100,000,000</td><td>$60,000,000</td><td>$40,000,000</td></tr>
+      <tr><td>11</td><td>$250,000,000</td><td>$150,000,000</td><td>$100,000,000</td></tr>
+      <tr><td>12</td><td>$500,000,000</td><td>$300,000,000</td><td>$200,000,000</td></tr>
+      <tr><td>13</td><td>$1,000,000,000</td><td>$600,000,000</td><td>$400,000,000</td></tr>
+      <tr><td>14</td><td>$10,000,000,000</td><td>$6,000,000,000</td><td>$4,000,000,000</td></tr>
+      <tr><td>15</td><td>$100,000,000,000</td><td>$60,000,000,000</td><td>$40,000,000,000</td></tr>
+      <tr><td>16</td><td>$1,000,000,000,000</td><td>$600,000,000,000</td><td>$400,000,000,000</td></tr>
+    </table>
+
+    <h3>Scaling Rule</h3>
+    <p>After Phase 16, any future continuation must be defined by a published, verified, and audited contract update. No future phase is promised or guaranteed.</p>
+  </div>
+</section>
+
+<section id="target">
+  <h2>2027 Target</h2>
+  <div class="grid">
+    <div class="card"><strong>Factory Status:</strong><p>Development</p></div>
+    <div class="card"><strong>Blockchain:</strong><p>NEAR Protocol</p></div>
+    <div class="card"><strong>OIM:</strong><p>Permanent</p></div>
+    <div class="card"><strong>Target Completion:</strong><p>Q3–Q4 2027</p></div>
+  </div>
+  <p class="muted">Timeline is subject to smart contract deployment, audit, security review, and public verification.</p>
+</section>
+
+<section id="status">
+  <h2>System Status</h2>
+  <div class="card">
+    <div class="status"><span>Website</span><span>Public</span></div>
+    <div class="status"><span>Profile System</span><span>Local / Active</span></div>
+    <div class="status"><span>Wallet Connect</span><span>Pending</span></div>
+    <div class="status"><span>Smart Contract</span><span>Pending</span></div>
+    <div class="status"><span>Treasury</span><span>Pending</span></div>
+    <div class="status"><span>Eruption Engine</span><span>Pending</span></div>
+  </div>
+</section>
+
+<section id="engage">
+  <h2>Engage Now</h2>
+  <div class="grid">
+    <div class="card"><h3>Create Profile</h3><p>Become a watcher waiting for launch.</p><a class="btn" href="#profile">Create Profile</a></div>
+    <div class="card"><h3>Read OIM</h3><p>Understand the permanent protection layer.</p><a class="btn" href="#oim">Read OIM</a></div>
+    <div class="card"><h3>Share Project</h3><p>Share Near Intersect Volcano with others.</p><button onclick="shareSite()">Share</button></div>
+    <div class="card"><h3>Follow Updates</h3><p>Watch the system move from profile stage toward launch stage.</p></div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="grid">
+    <div class="card"><h3>Is the token live?</h3><p>No. Token/Pie launch comes later after deployment, audit, and verification.</p></div>
+    <div class="card"><h3>Do profiles work now?</h3><p>Yes. Profiles save locally on the visitor’s device/browser.</p></div>
+    <div class="card"><h3>Can others see my profile?</h3><p>Not yet. Without backend or blockchain storage, profiles are local to the device.</p></div>
+    <div class="card"><h3>Do eruptions happen by button?</h3><p>No. Eruptions are automatic milestone events when system pressure reaches defined thresholds.</p></div>
+  </div>
+</section>
+
+<section class="warning">
+  <h2>Trust & Legal Clarity</h2>
+  <p>Near Intersect Volcano is a development-stage system. Nothing on this page is financial, investment, tax, or legal advice.</p>
+  <p>No guaranteed returns. No promise of profit. No guarantee that any future phase, treasury level, eruption threshold, or token launch will occur.</p>
+  <p>Future participation depends on deployed smart contracts, security review, public verification, and applicable law.</p>
+</section>
+
+<div class="footer">
+  <p>Near Intersect Volcano — Stablecoin Pressure Engine. Profile First. Token Later.</p>
+</div>
+
+</main>
+
+<script>
+function createProfile(){
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const name = document.getElementById("profileName").value.trim();
+  const wallet = document.getElementById("profileWallet").value.trim();
+
+  if(!username || !password || !name){
+    alert("Enter username, password, and profile name.");
+    return;
+  }
+
+  localStorage.setItem("user", username);
+  localStorage.setItem("pass", password);
+  localStorage.setItem("logged", "true");
+
+  const existing = localStorage.getItem("nearIntersectProfile");
+  let watcherNumber = localStorage.getItem("nearIntersectWatcherNumber");
+
+  if(!watcherNumber){
+    watcherNumber = 27350;
+    localStorage.setItem("nearIntersectWatcherNumber", watcherNumber);
+  }
+
+  const profile = {
+    id: existing ? JSON.parse(existing).id : "NIV-" + Date.now(),
+    watcherNumber: watcherNumber,
+    username: username,
+    name: name,
+    wallet: wallet || "Not connected yet",
+    createdAt: existing ? JSON.parse(existing).createdAt : new Date().toLocaleString(),
+    updatedAt: new Date().toLocaleString(),
+    status: "Watcher — Waiting for Launch 🚀"
+  };
+
+  localStorage.setItem("nearIntersectProfile", JSON.stringify(profile));
+  showProfile();
+}
+
+function showProfile(){
+  const saved = localStorage.getItem("nearIntersectProfile");
+  const result = document.getElementById("profileResult");
+  if(!saved || !result) return;
+
+  const profile = JSON.parse(saved);
+
+  result.innerHTML = `
+    <div class="profile-badge">
+      <h3>Profile Created</h3>
+      <p><strong>Watcher #:</strong> ${profile.watcherNumber || profile.participantNumber || 27350} — Waiting for Launch 🚀</p>
+      <p><strong>ID:</strong> ${profile.id}</p>
+      <p><strong>Username:</strong> ${profile.username || localStorage.getItem("user") || "Saved user"}</p>
+      <p><strong>Name:</strong> ${profile.name}</p>
+      <p><strong>Wallet:</strong> ${profile.wallet}</p>
+      <p><strong>Status:</strong> ${profile.status || "Watcher — Waiting for Launch 🚀"}</p>
+      <p><strong>Created:</strong> ${profile.createdAt}</p>
+      <p><strong>Last Updated:</strong> ${profile.updatedAt}</p>
+      <p class="muted">Saved locally on this device. This profile creates no token rights, treasury rights, eruption rights, or guaranteed future allocation.</p>
+    </div>
+  `;
+}
+
+function walletPlaceholder(){
+  document.getElementById("walletStatus").innerHTML =
+    "<strong>Status:</strong> Wallet connect pending until launch integration.";
+}
+
+function shareSite(){
+  const shareData = {
+    title: "Near Intersect Volcano",
+    text: "Near Intersect Volcano — Stablecoin Pressure Engine. Profile First. Token Later.",
+    url: window.location.href
+  };
+
+  if(navigator.share){
+    navigator.share(shareData);
+  }else{
+    navigator.clipboard.writeText(window.location.href);
+    alert("Site link copied.");
+  }
+}
+
+function showPrBlink(){
+  const prMessage = "🚀 NEAR INTERSECT VOLCANO • CANONICAL PRE-LAUNCH LAW ACTIVE • DEVELOPMENT STAGE • PROFILE FIRST • TOKEN LATER • NO TOKEN LIVE YET";
+  const prBlink = document.getElementById("prBlink");
+  if(prBlink){
+    prBlink.textContent = prMessage;
+  }
+}
+
+window.addEventListener("load", function(){
+  showProfile();
+  showPrBlink();
+});
+</script>
+
+</body>
+</html>
