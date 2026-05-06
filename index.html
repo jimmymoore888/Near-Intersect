@@ -173,7 +173,14 @@ input{
 }
 </style>
 </head>
+<script>
+  const prMessage = "🚀 NEAR INTERSECT VOLCANO • CANONICAL PRE-LAUNCH LAW ACTIVE • DEVELOPMENT STAGE • PROFILE FIRST • TOKEN LATER • NO TOKEN LIVE YET";
 
+  const prBlink = document.getElementById("prBlink");
+  if (prBlink) {
+    prBlink.textContent = prMessage;
+  }
+</script>
 <body>
 <main>
 
@@ -187,7 +194,8 @@ input{
   <p>
     Near Intersect Volcano is a development-stage economic system designed around profiles,
     stablecoin pressure, treasury reserves, and automatic eruption milestones.
-    Token deployment is not live yet. 
+    Token deployment is not live yet.
+<span id="prBlink" class="pr-blink"></span>
   </p>
 
   <div class="nav">
